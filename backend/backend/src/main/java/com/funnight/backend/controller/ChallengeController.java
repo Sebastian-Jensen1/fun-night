@@ -3,6 +3,8 @@ package com.funnight.backend.controller;
 import com.funnight.backend.service.ChallengeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,8 +17,9 @@ public class ChallengeController {
         this.challengeService = challengeService;
     }
 
-    @GetMapping("/Challenge")
+    @GetMapping("/challenge/random")
     public String challenge(){
-        return challengeService.getRandomChallenge();
+        var challenge = challengeService.getRandomChallenge();
+        return challenge != null ? challenge.getDescription() : "No challenges available.";
     }
 }

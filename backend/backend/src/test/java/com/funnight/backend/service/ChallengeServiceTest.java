@@ -1,5 +1,6 @@
 package com.funnight.backend.service;
 
+import com.funnight.backend.model.Challenge;
 import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,15 +16,16 @@ public class ChallengeServiceTest {
 
         // Draw all challenges exactly once
         for (int i = 0; i < totalChallenges; i++) {
-            String challenge = service.getRandomChallenge();
-            assertFalse(drawnChallenges.contains(challenge), "Should not draw the same challenge twice before reset: " + challenge);
-            drawnChallenges.add(challenge);
+            Challenge challenge = service.getRandomChallenge();
+            assertNotNull(challenge);
+            assertFalse(drawnChallenges.contains(challenge.getDescription()), "Should not draw the same challenge twice before reset: " + challenge.getDescription());
+            drawnChallenges.add(challenge.getDescription());
         }
 
         assertEquals(totalChallenges, drawnChallenges.size());
 
         // Draw again, should reset and draw another one
-        String nextChallenge = service.getRandomChallenge();
+        Challenge nextChallenge = service.getRandomChallenge();
         assertNotNull(nextChallenge);
     }
 }

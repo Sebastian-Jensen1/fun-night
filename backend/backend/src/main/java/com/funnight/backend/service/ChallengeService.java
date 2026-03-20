@@ -1,5 +1,6 @@
 package com.funnight.backend.service;
 
+import com.funnight.backend.model.Challenge;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,17 +9,17 @@ import java.util.Random;
 
 @Service
 public class ChallengeService {
-    private final List<String> challenges = new ArrayList<>();
-    private List<String> availableChallenges = new ArrayList<>();
+    private final List<Challenge> challenges = new ArrayList<>();
+    private List<Challenge> availableChallenges = new ArrayList<>();
     private final Random random = new Random();
 
     public ChallengeService() {
         // Initialize with some default challenges
-        challenges.add("Do 10 pushups");
-        challenges.add("Tell a joke");
-        challenges.add("Sing a song snippet");
-        challenges.add("Do a dance move");
-        challenges.add("Drink a glass of water");
+        challenges.add(new Challenge("Do 10 pushups"));
+        challenges.add(new Challenge("Tell a joke"));
+        challenges.add(new Challenge("Sing a song snippet"));
+        challenges.add(new Challenge("Do a dance move"));
+        challenges.add(new Challenge("Drink a glass of water"));
         
         resetAvailableChallenges();
     }
@@ -28,9 +29,9 @@ public class ChallengeService {
         Collections.shuffle(availableChallenges);
     }
 
-    public synchronized String getRandomChallenge() {
+    public synchronized Challenge getRandomChallenge() {
         if (challenges.isEmpty()) {
-            return "No challenges available.";
+            return null;
         }
 
         if (availableChallenges.isEmpty()) {
@@ -40,7 +41,7 @@ public class ChallengeService {
         return availableChallenges.remove(random.nextInt(availableChallenges.size()));
     }
 
-    public List<String> getAllChallenges() {
+    public List<Challenge> getAllChallenges() {
         return new ArrayList<>(challenges);
     }
 }

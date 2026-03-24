@@ -3,14 +3,12 @@ package com.funnight.backend.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import java.util.Map;
 
 @Getter
 @NoArgsConstructor(force = true)
 @AllArgsConstructor
 public class Round {
-    private Long RoundId;
-    private List<Player> players;
-    private List<Challenge> challenges;
+    private Long roundId;
+    private Map<Long,Challenge> playerChallenges;
 }

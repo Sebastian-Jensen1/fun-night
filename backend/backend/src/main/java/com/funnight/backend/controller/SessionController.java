@@ -1,6 +1,7 @@
 package com.funnight.backend.controller;
 
 import com.funnight.backend.model.Player;
+import com.funnight.backend.model.Round;
 import com.funnight.backend.model.Session;
 import com.funnight.backend.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/session")
@@ -20,17 +22,13 @@ public class SessionController {
         this.sessionService = sessionService;
     }
 
-    /**
-     * Endpoint for creating a new session.
-     */
+    /** Endpoint for creating a new session.*/
     @PostMapping("/create")
     public Session createSession() {
         return sessionService.createSession();
     }
 
-    /**
-     * Endpoint for retrieving details of a specific session.
-     */
+    /** Endpoint for retrieving details of a specific session.*/
     @GetMapping("/{id}")
     public ResponseEntity<Session> getSession(@PathVariable Long id) {
         return sessionService.getSession(id)
@@ -38,9 +36,7 @@ public class SessionController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    /**
-     * Endpoint for adding a player to a session.
-     */
+    /** Endpoint for adding a player to a session.*/
     @PostMapping("/{id}/player")
     public ResponseEntity<Player> addPlayer(@PathVariable Long id, @RequestBody String username) {
         try {
@@ -51,10 +47,7 @@ public class SessionController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    /**
-     * Endpoint for removing a player from a session.
-     */
+    /** Endpoint for removing a player from a session.*/
     @DeleteMapping("/{id}/player/{username}")
     public ResponseEntity<Void> removePlayer(@PathVariable Long id, @PathVariable String username) {
         try {
@@ -64,12 +57,22 @@ public class SessionController {
             return ResponseEntity.notFound().build();
         }
     }
+       /** Endpoint for starting a new round*/
+    @PostMapping("/{id}/round")
+    public ResponseEntity<Round> addRound(@PathVariable Long id, @RequestBody Round round) {
+        try {
+            sessionService.startNewRound(id);
+            return ResponseEntity.ok(round);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-    /**
-     * Endpoint for listing all sessions (useful for debugging).
-     */
+    /** Endpoint for listing all sessions (useful for debugging).*/
     @GetMapping("/all")
     public Collection<Session> getAllSessions() {
         return sessionService.getAllSessions().values();
     }
 }
+
+

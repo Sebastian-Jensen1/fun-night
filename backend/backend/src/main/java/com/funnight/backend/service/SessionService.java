@@ -1,5 +1,9 @@
 package com.funnight.backend.service;
 
+import com.funnight.backend.exception.EmptySessionException;
+import com.funnight.backend.exception.PlayerAlreadyExistException;
+import com.funnight.backend.exception.PlayerNotFoundException;
+import com.funnight.backend.exception.SessionNotFoundException;
 import com.funnight.backend.model.Player;
 import com.funnight.backend.model.Round;
 import com.funnight.backend.model.Session;
@@ -40,9 +44,13 @@ public class SessionService {
     public Player addPlayerToSession(Long sessionId, String username) {
         Session session = sessions.get(sessionId);
         if (session == null) {
-            throw new IllegalArgumentException("Session with ID " + sessionId + " does not exist.");
+            throw new SessionNotFoundException(sessionId);
         }
-
+        boolean duplicate = session.getPlayers().stream()
+                .anyMatch(player -> player.getUsername().equals(username));
+        if (duplicate) {
+            throw new PlayerAlreadyExistException(username, sessionId);
+        }
         Long playerId = playerCounter.getAndIncrement();
         Player player = new Player(playerId, username);
         session.addPlayer(player);
@@ -53,24 +61,37 @@ public class SessionService {
     public void removePlayerFromSession(Long sessionId, String username) {
         Session session = sessions.get(sessionId);
         if (session == null) {
-            throw new IllegalArgumentException("Session with ID " + sessionId + " does not exist.");
+            throw new SessionNotFoundException(sessionId);
         }
 
         boolean removed = session.getPlayers().removeIf(player -> player.getUsername().equals(username));
         if (!removed) {
-            throw new IllegalArgumentException("Player with username " + username + " does not exist in session " + sessionId);
+            throw new PlayerNotFoundException(username, sessionId);
         }
+    }
+    /** Edit username for a player*/
+    public void editUsername(Long sessionId, String oldUsername, String newUsername) {
+        Session session = sessions.get(sessionId);
+        if (session == null) {
+            throw new  SessionNotFoundException(sessionId);
+        }
+
+        Player player = session.getPlayers().stream()
+                .filter(p -> p.getUsername().equals(oldUsername))
+                .findFirst()
+                .orElseThrow(() -> new PlayerNotFoundException(oldUsername, sessionId));
+
+        player.setUsername(newUsername);
     }
 
     /** Returns all active sessions. */
-    public Map<Long, Session> getAllSessions() {
-        return sessions;
-    }
+    public Map<Long, Session> getAllSessions()  {return sessions;}
 
+    /** Start a new round*/
     public Round startNewRound (Long sessionId) {
         Session session = sessions.get(sessionId);
         if (session == null) {
-            throw new IllegalArgumentException("Session with ID " + sessionId + " does not exist.");
+            throw new SessionNotFoundException(sessionId);
         }
         Map<Long,Challenge> assignments = new HashMap<>();
         for (Player player : session.getPlayers()) {
@@ -79,9 +100,9 @@ public class SessionService {
 
         }
         Long roundId = roundCounter.getAndIncrement();
-        Round newRound = new Round(roundId, assignments);
-        if (session.getPlayers().isEmpty()) { throw new IllegalArgumentException("Cannot start a round with no players"); }
-        session.getRounds().add(newRound);
-        return newRound;
+        Round round = new Round(roundId, assignments);
+        if (session.getPlayers().isEmpty()) { throw new EmptySessionException(sessionId,roundId); }
+        session.getRounds().add(round);
+        return round;
     }
 }

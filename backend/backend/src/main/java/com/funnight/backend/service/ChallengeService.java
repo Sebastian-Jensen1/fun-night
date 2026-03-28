@@ -1,5 +1,6 @@
 package com.funnight.backend.service;
 
+import com.funnight.backend.exception.NoChallengesAvailableException;
 import com.funnight.backend.model.Challenge;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -28,10 +29,10 @@ public class ChallengeService {
         availableChallenges = new ArrayList<>(challenges);
         Collections.shuffle(availableChallenges);
     }
-
+    /** Synchronized does so only 1 player can draw at a time, creates a queue*/
     public synchronized Challenge getRandomChallenge() {
         if (challenges.isEmpty()) {
-            return null;
+            throw new NoChallengesAvailableException();
         }
 
         if (availableChallenges.isEmpty()) {

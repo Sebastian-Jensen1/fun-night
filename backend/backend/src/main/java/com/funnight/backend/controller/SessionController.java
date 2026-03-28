@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/session")
@@ -57,11 +57,22 @@ public class SessionController {
             return ResponseEntity.notFound().build();
         }
     }
+    /** Update username */
+    @PutMapping("/{id}/player/{oldUsername}/{newUsername}")
+        public ResponseEntity<Void> updateUsername(@PathVariable Long id, @PathVariable String oldUsername, @PathVariable String newUsername) {
+        try {
+            sessionService.editUsername(id,oldUsername,newUsername);
+            return ResponseEntity.ok().build();
+        }  catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
        /** Endpoint for starting a new round*/
     @PostMapping("/{id}/round")
-    public ResponseEntity<Round> addRound(@PathVariable Long id, @RequestBody Round round) {
+    public ResponseEntity<Round> addRound(@PathVariable Long id) {
         try {
-            sessionService.startNewRound(id);
+             Round round = sessionService.startNewRound(id);
             return ResponseEntity.ok(round);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();

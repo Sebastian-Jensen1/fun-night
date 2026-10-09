@@ -1,0 +1,14 @@
+.page-title { font-size: clamp(2rem, 7vw, 3rem); }
+.sign-sub { margin: 4px 0 0; font-weight: 800; color: var(--white); text-shadow: 0 2px 0 var(--ink); }
+
+.quickplay__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 220px));
+  gap: 26px 22px;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .quickplay__grid { grid-template-columns: repeat(2, minmax(0, 200px)); gap: 22px 16px; }
+}

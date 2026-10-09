@@ -1,0 +1,5 @@
+.zombie { display: block; width: 100%; height: auto; overflow: visible; animation: shamble 2.8s ease-in-out infinite; transform-origin: 50% 100%; }
+.zombie__head { transform-box: fill-box; transform-origin: 50% 90%; animation: wobble 1.9s ease-in-out infinite; }
+.zombie__arm { transform-box: fill-box; animation: bob 1.4s ease-in-out infinite; }
+.zombie__arm--right { animation-delay: .7s; }
+.zombie--cheer .zombie__arm { animation-duration: .5s; }

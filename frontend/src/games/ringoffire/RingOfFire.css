@@ -1,0 +1,116 @@
+.rof { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
+
+.rof__banner {
+  margin: 0;
+  padding: 8px 22px;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  background: linear-gradient(180deg, var(--wood-light), var(--wood));
+  border: var(--outline);
+  border-radius: 14px;
+  box-shadow: var(--shadow-pop);
+  color: var(--white);
+  text-shadow: 0 3px 0 var(--ink);
+  text-align: center;
+}
+
+/* --- the ring ----------------------------------------------------------- */
+.rof__ring {
+  --size: min(88vw, 440px);
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 140, 40, .35) 0 30%, transparent 31%),
+    radial-gradient(circle, var(--felt) 0 62%, var(--felt-dark) 63% 70%, transparent 71%);
+  container-type: inline-size;
+}
+
+.rof__slot {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 7.5cqw; height: 11cqw;
+  margin: -5.5cqw 0 0 -3.75cqw;
+  padding: 0;
+  background: repeating-linear-gradient(45deg, #b4562a 0 4px, #d9783d 4px 8px);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px var(--white);
+  transform: rotate(var(--angle)) translateY(-40cqw);
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s;
+}
+.rof__slot:hover:not(:disabled) { transform: rotate(var(--angle)) translateY(-43cqw); filter: brightness(1.15); }
+.rof__slot:disabled { cursor: default; }
+.rof__slot:focus-visible { outline: 3px solid var(--sun); }
+
+.rof__center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.rof-cup { display: flex; flex-direction: column; align-items: center; width: 34cqw; }
+.rof-cup svg { width: 100%; height: auto; overflow: visible; }
+.rof-cup__drink { transition: y .6s ease; }
+.rof-cup__kings { display: flex; gap: 2px; font-size: 6cqw; line-height: 1; color: rgba(0,0,0,.35); }
+.rof-cup__kings span { transition: color .3s, transform .3s; }
+.rof-cup__king--on { color: var(--sun); transform: scale(1.15); text-shadow: 0 2px 0 var(--ink); }
+.rof-cup__sips { font-size: 4.2cqw; color: var(--white); text-shadow: 0 2px 0 var(--ink); }
+
+/* --- resolve panel ------------------------------------------------------ */
+.rof-resolve {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: inset 0 0 0 6px #f0694f, inset 0 0 0 9px var(--danger-dark), var(--shadow-pop);
+}
+.rof-resolve .card { animation: hl-deal .4s ease-out both; flex-shrink: 0; }
+.rof-resolve__body { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
+.rof-resolve__who { font-size: .9rem; opacity: .8; }
+.rof-resolve__title { font-size: 2rem; line-height: 1; color: var(--danger); }
+.rof-resolve__desc { margin: 0; font-size: 1.05rem; }
+.rof-resolve__prompt { margin-top: 4px; }
+.rof-resolve__players { display: flex; flex-wrap: wrap; gap: 8px; }
+
+@keyframes hl-deal {
+  from { transform: translateY(-40px) rotate(-12deg) scale(.6); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.rof__over { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.rof__over p { margin: 0; }
+
+.rof__last {
+  margin: 0;
+  padding: 8px 16px;
+  background: rgba(255, 253, 245, .92);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  text-align: center;
+}
+
+.rof__status { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.rof__chip {
+  padding: 4px 12px;
+  background: var(--packet);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: .9rem;
+}
+
+.rof__rules { width: 100%; max-width: 640px; padding: 12px 18px; }
+.rof__rules summary { cursor: pointer; font-size: 1.1rem; }
+.rof__rules dl { margin: 10px 0 0; display: grid; gap: 6px; }
+.rof__rule dt { font-size: 1rem; }
+.rof__rule dd { margin: 0 0 4px; }
+
+@media (max-width: 520px) {
+  .rof-resolve { flex-direction: column; text-align: center; }
+  .rof-resolve__body { align-items: center; }
+  .rof-resolve__players { justify-content: center; }
+}

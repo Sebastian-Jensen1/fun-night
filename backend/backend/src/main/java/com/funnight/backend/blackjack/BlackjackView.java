@@ -1,5 +1,7 @@
 package com.funnight.backend.blackjack;
 
+import com.funnight.backend.cards.Card;
+import com.funnight.backend.cards.CardView;
 import java.util.List;
 
 /**
@@ -16,12 +18,6 @@ public record BlackjackView(
         int maxBet,
         int cardsLeft
 ) {
-    public record CardView(String rank, Suit suit) {
-        static CardView of(Card c) {
-            return new CardView(c.rank().getLabel(), c.suit());
-        }
-    }
-
     public record DealerView(List<CardView> cards, int hiddenCards, Integer value, boolean blackjack, boolean bust) {
     }
 

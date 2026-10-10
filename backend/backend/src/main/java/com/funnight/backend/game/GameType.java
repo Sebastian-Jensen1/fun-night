@@ -10,8 +10,8 @@ import java.util.Optional;
 public enum GameType {
     BLACKJACK("blackjack", "Blackjack", "Beat the dealer. Bet sips, not chips.", true),
     DARES("dares", "Brain Dares", "Do the dare or drink up, chicken.", true),
-    GAME_3("game-3", "Mystery Game #3", "Still growing in the garden...", false),
-    GAME_4("game-4", "Mystery Game #4", "Still growing in the garden...", false),
+    HIGHER_LOWER("higher-lower", "Higher or Lower", "Guess the next card. Wrong? Drink the pile.", true),
+    RING_OF_FIRE("ring-of-fire", "Ring of Fire", "Every card has a rule. Don't pull the last king.", true),
     GAME_5("game-5", "Mystery Game #5", "Still growing in the garden...", false),
     GAME_6("game-6", "Mystery Game #6", "Still growing in the garden...", false);
 

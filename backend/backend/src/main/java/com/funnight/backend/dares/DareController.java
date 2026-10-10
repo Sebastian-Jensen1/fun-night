@@ -1,5 +1,6 @@
 package com.funnight.backend.dares;
 
+import com.funnight.backend.game.GameType;
 import com.funnight.backend.service.ChallengeService;
 import com.funnight.backend.session.GameSession;
 import com.funnight.backend.session.SessionService;
@@ -54,6 +55,7 @@ public class DareController {
     }
 
     private DareGame game(GameSession session) {
-        return session.dares(() -> new DareGame(challengeService.getAllChallenges(), session.getPlayers()));
+        return session.game(GameType.DARES, DareGame.class,
+                () -> new DareGame(challengeService.getAllChallenges(), session.getPlayers()));
     }
 }

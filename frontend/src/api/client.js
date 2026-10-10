@@ -65,4 +65,21 @@ export const api = {
     resolve: (id, token, playerId, completed) =>
       request(`${sessionPath(id)}/dares/resolve`, { method: 'POST', token, body: { playerId, completed } }),
   },
+
+  higherLower: {
+    get: (id, token) => request(`${sessionPath(id)}/higher-lower`, { token }),
+    guess: (id, token, playerId, guess) =>
+      request(`${sessionPath(id)}/higher-lower/guess`, { method: 'POST', token, body: { playerId, guess } }),
+    pass: (id, token, playerId) =>
+      request(`${sessionPath(id)}/higher-lower/pass`, { method: 'POST', token, body: { playerId } }),
+  },
+
+  ringOfFire: {
+    get: (id, token) => request(`${sessionPath(id)}/ring-of-fire`, { token }),
+    draw: (id, token, playerId) =>
+      request(`${sessionPath(id)}/ring-of-fire/draw`, { method: 'POST', token, body: { playerId } }),
+    resolve: (id, token, playerId, targetId) =>
+      request(`${sessionPath(id)}/ring-of-fire/resolve`, { method: 'POST', token, body: { playerId, targetId } }),
+    restart: (id, token) => request(`${sessionPath(id)}/ring-of-fire/restart`, { method: 'POST', token }),
+  },
 }

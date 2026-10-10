@@ -25,6 +25,29 @@ export default function GameIcon({ gameId, size = 64 }) {
       </svg>
     )
   }
+  if (gameId === 'higher-lower') {
+    return (
+      <svg {...common}>
+        <rect x="22" y="14" width="36" height="52" rx="6" fill="#fff" {...stroke} />
+        <text x="40" y="48" textAnchor="middle" fontSize="22" fontFamily="var(--font-display)" fill="var(--ink)">7</text>
+        <path d="M66 30 L74 18 L82 30 Z" transform="translate(-6 0)" fill="#8fd14f" {...stroke} strokeWidth="3" />
+        <path d="M66 50 L74 62 L82 50 Z" transform="translate(-6 0)" fill="#f0694f" {...stroke} strokeWidth="3" />
+      </svg>
+    )
+  }
+  if (gameId === 'ring-of-fire') {
+    const cards = Array.from({ length: 10 }, (_, i) => i * 36)
+    return (
+      <svg {...common}>
+        {cards.map((deg) => (
+          <rect key={deg} x="36" y="4" width="8" height="14" rx="2" fill="#d9783d" stroke="var(--ink)" strokeWidth="2" transform={`rotate(${deg} 40 40)`} />
+        ))}
+        <path d="M28 30 h24 l-3 18 a9 9 0 0 1 -18 0 Z" fill="var(--sun)" {...stroke} strokeWidth="3" />
+        <path d="M40 57 v8 M32 66 h16" fill="none" {...stroke} strokeWidth="3" strokeLinecap="round" />
+        <path d="M33 30 c2 -6 6 -2 7 -8 c1 6 5 2 7 8" fill="#f0694f" stroke="var(--ink)" strokeWidth="2" />
+      </svg>
+    )
+  }
   return (
     <svg {...common}>
       <g {...stroke}>

@@ -1,4 +1,4 @@
-package com.funnight.backend.blackjack;
+package com.funnight.backend.cards;
 
 import java.security.SecureRandom;
 import java.util.ArrayDeque;

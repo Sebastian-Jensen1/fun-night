@@ -16,7 +16,7 @@ Either way you pick how many players there are (1–8) and enter their names fir
 
 | # | Game | Status |
 | - | ---- | ------ |
-| 1 | **Blackjack**: bet 1–5 sips against Dealer Dan. Lose and you drink your bet, win and you hand it out (natural blackjack pays 3:2). Hit, stand or double down. | ✅ Playable |
+| 1 | **Blackjack**: bet 1–5 sips against Dealer Dan. Lose and you drink your bet, win and you hand it out (natural blackjack pays 3:2). Hit, stand or double down. The dealer always draws to 17. Lowkey casino jazz plays in the background (generated live in the browser; toggle it with the 🎷 button). | ✅ Playable |
 | 2 | **Brain Dares**: take turns drawing a dare. Do it and hand out 1 sip, or chicken out and drink 3. | ✅ Playable |
 | 3 | **Higher or Lower**: guess if the next card is higher or lower (aces high, same rank counts as wrong). Each right guess grows the pile; a wrong guess drinks 1 sip per card in the pile (max 5). Three right in a row and you can pass the pile on. | ✅ Playable |
 | 4 | **Ring of Fire** (King's Cup): pull cards from a ring; every rank has a rule (Waterfall, You, Me, Floor, Mate, Rhyme, Question Master …). Kings fill the King's Cup, and whoever pulls the 4th king drinks it. | ✅ Playable |

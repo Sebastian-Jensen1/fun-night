@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { api } from '../../api/client'
 import Dealer from '../../components/Dealer'
 import PlayingCard from '../../components/PlayingCard'
+import MusicToggle from './MusicToggle'
 import './Blackjack.css'
 
 const DEFAULT_BET = 2
@@ -140,6 +141,7 @@ export default function Blackjack({ sessionId, token, players, onScoresChanged }
 
   return (
     <div className="bj">
+      <MusicToggle />
       <div className="bj__dealer-area">
         <div className="bj__dealer">
           <Dealer mood={mood} />

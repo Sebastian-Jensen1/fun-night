@@ -122,9 +122,8 @@ public class BlackjackGame {
         settle();
     }
 
+    /** The dealer always plays out the hand to 17, even when every player has busted. */
     private void playDealer() {
-        boolean anyoneStanding = seats.stream().anyMatch(s -> s.getStatus() == Seat.Status.STOOD);
-        if (!anyoneStanding) return;
         while (dealer.value() < DEALER_STANDS_ON) {
             dealer.add(shoe.draw());
         }

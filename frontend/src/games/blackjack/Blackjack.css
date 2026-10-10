@@ -1,5 +1,31 @@
 .bj { display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; }
 
+/* --- music toggle ------------------------------------------------------ */
+.music-toggle {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  padding: 4px 12px;
+  background: var(--packet);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 0 3px 0 var(--ink);
+  font-weight: 800;
+  font-size: .9rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+.music-toggle--on { background: #fff3b0; }
+.music-toggle:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.music-toggle__eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+.music-toggle__eq i { width: 3px; background: var(--ink); border-radius: 1px; animation: eq .9s ease-in-out infinite; }
+.music-toggle__eq i:nth-child(2) { animation-delay: .3s; }
+.music-toggle__eq i:nth-child(3) { animation-delay: .6s; }
+@keyframes eq { 0%, 100% { height: 3px; } 50% { height: 12px; } }
+
 /* --- dealer ------------------------------------------------------------- */
 .bj__dealer-area {
   position: relative;

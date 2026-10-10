@@ -47,15 +47,16 @@ class BlackjackGameTest {
 
     @Test
     void bustingDrinksTheBet() {
-        // Alice: 10+6, Dealer: 10+7, Alice hits a king
-        BlackjackGame game = gameWith(Rank.TEN, Rank.TEN, Rank.SIX, Rank.SEVEN, Rank.KING);
+        // Alice: 10+6, Dealer: 10+5, Alice hits a king and busts; dealer then draws a 3
+        BlackjackGame game = gameWith(Rank.TEN, Rank.TEN, Rank.SIX, Rank.FIVE, Rank.KING, Rank.THREE);
         game.deal(List.of(alice), Map.of(1, 2));
         game.act(1, BlackjackGame.Action.HIT);
 
         assertEquals(Seat.Outcome.BUST, game.getSeats().get(0).getOutcome());
         assertEquals(2, alice.getSipsDrunk());
-        // Nobody left standing, so the dealer doesn't draw.
-        assertEquals(2, game.getDealer().size());
+        // The dealer still plays out his hand to 17 even though everyone busted.
+        assertEquals(3, game.getDealer().size());
+        assertEquals(18, game.getDealer().value());
     }
 
     @Test

@@ -1,0 +1,35 @@
+.dealer { display: block; width: 100%; height: auto; overflow: visible; }
+
+.dealer__body, .dealer__head { transform-box: fill-box; transform-origin: 50% 100%; }
+.dealer__head { animation: dealer-bob 3.2s ease-in-out infinite; }
+.dealer__cards { transform-box: fill-box; transform-origin: 30% 100%; animation: wobble 2.4s ease-in-out infinite; }
+
+.dealer__blink { transform-box: fill-box; transform-origin: 50% 0; transform: scaleY(0); animation: dealer-blink 4.5s infinite; }
+
+.dealer--happy .dealer__head { animation: dealer-laugh .45s ease-in-out infinite; }
+.dealer--sad .dealer__head { animation: dealer-droop 2.6s ease-in-out infinite; }
+.dealer--shock .dealer__head { animation: dealer-shock .5s ease-out 1; }
+
+.dealer__sweat { animation: bob 1.2s ease-in-out infinite; }
+
+@keyframes dealer-bob {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-3px) rotate(-1.5deg); }
+}
+@keyframes dealer-blink {
+  0%, 94%, 100% { transform: scaleY(0); }
+  96% { transform: scaleY(1); }
+}
+@keyframes dealer-laugh {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-5px) rotate(2deg); }
+}
+@keyframes dealer-droop {
+  0%, 100% { transform: translateY(4px) rotate(4deg); }
+  50% { transform: translateY(6px) rotate(2deg); }
+}
+@keyframes dealer-shock {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-14px) scale(1.06); }
+  100% { transform: translateY(0) scale(1); }
+}

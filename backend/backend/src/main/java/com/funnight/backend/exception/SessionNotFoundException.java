@@ -1,5 +1,9 @@
 package com.funnight.backend.exception;
 
-public class SessionNotFoundException extends RuntimeException {
-  public SessionNotFoundException(Long sessionId) {super("Session with ID " + sessionId + " does not exist.");}
+import org.springframework.http.HttpStatus;
+
+public class SessionNotFoundException extends ApiException {
+    public SessionNotFoundException() {
+        super(HttpStatus.NOT_FOUND, "Session does not exist or has expired.");
+    }
 }

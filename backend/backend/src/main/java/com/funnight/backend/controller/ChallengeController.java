@@ -17,7 +17,7 @@ public class ChallengeController {
         this.challengeService = challengeService;
     }
 
-    @GetMapping("/challenge/random")
+    @GetMapping("/api/challenges/random")
     public String challenge(){
         var challenge = challengeService.getRandomChallenge();
         return challenge != null ? challenge.getDescription() : "No challenges available.";

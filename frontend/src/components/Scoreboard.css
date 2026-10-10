@@ -1,0 +1,38 @@
+.scoreboard {
+  background: linear-gradient(180deg, var(--wood-light), var(--wood));
+  border: var(--outline);
+  border-radius: 14px;
+  box-shadow: var(--shadow-pop);
+  padding: 10px 12px 12px;
+  width: 100%;
+}
+.scoreboard__title {
+  font-size: 1.1rem;
+  color: var(--white);
+  -webkit-text-stroke: 1.5px var(--ink);
+  paint-order: stroke fill;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.scoreboard__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+.scoreboard__player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--packet);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 4px 10px;
+  font-size: .95rem;
+  transition: transform .2s;
+}
+.scoreboard__player--active { background: #fff3b0; transform: scale(1.04); box-shadow: 0 0 0 3px var(--sun); }
+.scoreboard__name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.scoreboard__stat { font-weight: 800; white-space: nowrap; }

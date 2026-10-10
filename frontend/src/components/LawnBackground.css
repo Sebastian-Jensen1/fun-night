@@ -1,0 +1,96 @@
+.lawn-bg {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom) 30%, var(--lawn-dark) 30%);
+}
+
+.lawn-bg__scenery { position: absolute; inset: 0; pointer-events: none; }
+
+.lawn-bg__lawn {
+  position: absolute;
+  inset: 230px 0 0 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.18), transparent 40px),
+    repeating-linear-gradient(90deg, var(--lawn-light) 0 90px, var(--lawn-dark) 90px 180px);
+}
+.lawn-bg__lawn::after {
+  /* checkerboard rows, like garden plots */
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(180deg, transparent 0 110px, rgba(0,0,0,.06) 110px 220px);
+}
+
+.lawn-bg__fence {
+  position: absolute;
+  left: 0; right: 0; top: 168px; height: 66px;
+  background:
+    linear-gradient(180deg, transparent 18px, #e9dcc0 18px 26px, var(--ink) 26px 28px, transparent 28px 44px, #e9dcc0 44px 52px, var(--ink) 52px 54px, transparent 54px),
+    repeating-linear-gradient(90deg, transparent 0 6px, var(--ink) 6px 8px, #fff6e0 8px 30px, var(--ink) 30px 32px, transparent 32px 40px);
+  clip-path: polygon(0 10px, 100% 10px, 100% 100%, 0 100%);
+}
+
+.lawn-bg__house {
+  position: absolute;
+  right: -40px; top: 60px;
+  width: 260px; height: 180px;
+  background: linear-gradient(180deg, #e8c99a, #d4ab73);
+  border: var(--outline);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 12px rgba(255,255,255,.08);
+}
+.lawn-bg__house::before {
+  content: '';
+  position: absolute; left: -24px; right: -24px; top: -64px; height: 70px;
+  background: #b0472d;
+  border: var(--outline);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.lawn-bg__house::after {
+  content: '';
+  position: absolute; left: 40px; top: 40px; width: 54px; height: 46px;
+  background: #8fd3ff;
+  border: var(--outline);
+  box-shadow: 100px 0 0 -3px #8fd3ff, 100px 0 0 0 var(--ink);
+}
+
+.lawn-bg__sun {
+  position: absolute;
+  left: 6%; top: 26px;
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #fff6b0, var(--sun) 55%, var(--sun-dark));
+  border: var(--outline);
+  box-shadow: 0 0 0 10px rgba(255, 217, 59, .35), 0 0 0 22px rgba(255, 217, 59, .15);
+  animation: bob 5s ease-in-out infinite;
+}
+
+.lawn-bg__cloud {
+  position: absolute;
+  width: 120px; height: 38px;
+  background: #fff;
+  border: var(--outline);
+  border-radius: 40px;
+  opacity: .95;
+}
+.lawn-bg__cloud::before {
+  content: '';
+  position: absolute; left: 22px; top: -26px;
+  width: 58px; height: 52px;
+  background: #fff;
+  border: var(--outline);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+}
+.lawn-bg__cloud--a { left: 30%; top: 40px; animation: drift 60s linear infinite; }
+.lawn-bg__cloud--b { left: 62%; top: 90px; transform: scale(.7); animation: drift 85s linear infinite reverse; }
+
+@keyframes drift { from { translate: -40vw 0; } to { translate: 40vw 0; } }
+
+.lawn-bg__content { position: relative; z-index: 1; }
+
+@media (max-width: 640px) {
+  .lawn-bg__house { display: none; }
+  .lawn-bg__sun { width: 52px; height: 52px; }
+}

@@ -1,33 +1,42 @@
-import React from 'react';
-import './Home.css';
-import { useSessionHook } from '../hooks/useSession.js';
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Dealer from '../components/Dealer'
+import Zombie from '../components/Zombie'
+import './Home.css'
 
 function Home() {
-    const { error, createSession } = useSessionHook();
-    const navigate = useNavigate(); //used to insert on a button to navigate to a page
-
-    const handleStartGame = async () => {
-        try {
-            const newSession = await createSession();
-            navigate(`/create-session/${newSession.id}`);
-        } catch (err) {
-            console.error("Error creating session:", err);
-        }
-    };
-
-    if (error) return <div>Error Occurred: {error}</div>;
-
-    return (
-        <div className={"home-container"} >
-            <h1 className={"welcome-home"}>Welcome!</h1>
-
-            <button className={"start-game-button"} onClick={handleStartGame}>
-                Start Game
-            </button>
-
+  return (
+    <div className="page home">
+      <div className="home__hero">
+        <div className="home__dealer">
+          <Dealer mood="idle" />
         </div>
-    );
+
+        <header className="wood-sign home__title">
+          <h1 className="outlined">Fun Night</h1>
+          <p className="display home__subtitle">Pints vs. Zombies</p>
+        </header>
+
+        <div className="home__zombie">
+          <Zombie />
+        </div>
+      </div>
+
+      <nav className="home__menu" aria-label="Choose how to play">
+        <Link to="/setup/full" className="tombstone">
+          <span className="tombstone__title display">Full Night</span>
+          <span className="tombstone__sub">All 6 games, one after another</span>
+        </Link>
+        <Link to="/quickplay" className="tombstone tombstone--alt">
+          <span className="tombstone__title display">Quick Play</span>
+          <span className="tombstone__sub">Pick one game and jump straight in</span>
+        </Link>
+      </nav>
+
+      <p className="home__footer">
+        Play responsibly. Water counts as a sip too 💧 and nobody has to drink to play.
+      </p>
+    </div>
+  )
 }
 
-export default Home;
+export default Home

@@ -1,3 +1,5 @@
+import './PlayingCard.css'
+
 const SUITS = {
   HEARTS: { symbol: '♥', red: true, name: 'hearts' },
   DIAMONDS: { symbol: '♦', red: true, name: 'diamonds' },
@@ -6,11 +8,12 @@ const SUITS = {
 }
 
 /** A single playing card. Pass no card to show the back (the dealer's hole card). */
-export default function PlayingCard({ card, index = 0 }) {
+export default function PlayingCard({ card, index = 0, size, className = '' }) {
   const style = { '--i': index }
+  const extra = `${size === 'lg' ? 'card--lg' : ''} ${className}`
   if (!card) {
     return (
-      <div className="card card--back" style={style} role="img" aria-label="Face-down card">
+      <div className={`card card--back ${extra}`} style={style} role="img" aria-label="Face-down card">
         <span className="card__back-art" aria-hidden="true">🧠</span>
       </div>
     )
@@ -18,7 +21,7 @@ export default function PlayingCard({ card, index = 0 }) {
   const suit = SUITS[card.suit]
   return (
     <div
-      className={`card ${suit.red ? 'card--red' : ''}`}
+      className={`card ${suit.red ? 'card--red' : ''} ${extra}`}
       style={style}
       role="img"
       aria-label={`${card.rank} of ${suit.name}`}

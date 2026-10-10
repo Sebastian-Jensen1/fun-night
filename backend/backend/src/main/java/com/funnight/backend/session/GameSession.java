@@ -1,12 +1,12 @@
 package com.funnight.backend.session;
 
-import com.funnight.backend.blackjack.BlackjackGame;
-import com.funnight.backend.dares.DareGame;
 import com.funnight.backend.exception.GameRuleException;
 import com.funnight.backend.game.GameType;
 
 import java.time.Instant;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -25,8 +25,7 @@ public class GameSession {
     private int currentIndex = -1;
     private boolean finished;
 
-    private BlackjackGame blackjack;
-    private DareGame dares;
+    private final Map<GameType, Object> gameStates = new EnumMap<>(GameType.class);
 
     GameSession(String id, byte[] tokenHash, SessionMode mode, List<Player> players, List<GameType> lineUp, Instant now) {
         this.id = id;
@@ -66,16 +65,13 @@ public class GameSession {
         }
     }
 
-    public BlackjackGame blackjack(Supplier<BlackjackGame> factory) {
-        requireCurrentGame(GameType.BLACKJACK);
-        if (blackjack == null) blackjack = factory.get();
-        return blackjack;
-    }
-
-    public DareGame dares(Supplier<DareGame> factory) {
-        requireCurrentGame(GameType.DARES);
-        if (dares == null) dares = factory.get();
-        return dares;
+    /**
+     * Returns the state for {@code type}, creating it on first use. Fails if the session is
+     * currently on a different game, so one game's endpoints can't be played during another.
+     */
+    public <T> T game(GameType type, Class<T> stateClass, Supplier<T> factory) {
+        requireCurrentGame(type);
+        return stateClass.cast(gameStates.computeIfAbsent(type, t -> factory.get()));
     }
 
     /** Completes the current game and moves on, skipping games that aren't playable yet. */

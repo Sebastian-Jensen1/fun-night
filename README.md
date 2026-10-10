@@ -8,13 +8,19 @@ Either way you pick how many players there are (1–8) and enter their names fir
 | --- | --- | --- |
 | ![Home](docs/screenshots/home.png) | ![Quick Play](docs/screenshots/quickplay.png) | ![Blackjack](docs/screenshots/blackjack.png) |
 
+| Higher or Lower | Ring of Fire |
+| --- | --- |
+| ![Higher or Lower](docs/screenshots/higher-lower.png) | ![Ring of Fire](docs/screenshots/ring-of-fire.png) |
+
 ## The games
 
 | # | Game | Status |
 | - | ---- | ------ |
 | 1 | **Blackjack**: bet 1–5 sips against Dealer Dan. Lose and you drink your bet, win and you hand it out (natural blackjack pays 3:2). Hit, stand or double down. | ✅ Playable |
 | 2 | **Brain Dares**: take turns drawing a dare. Do it and hand out 1 sip, or chicken out and drink 3. | ✅ Playable |
-| 3–6 | Mystery games | 🌱 Coming soon |
+| 3 | **Higher or Lower**: guess if the next card is higher or lower (aces high, same rank counts as wrong). Each right guess grows the pile; a wrong guess drinks 1 sip per card in the pile (max 5). Three right in a row and you can pass the pile on. | ✅ Playable |
+| 4 | **Ring of Fire** (King's Cup): pull cards from a ring; every rank has a rule (Waterfall, You, Me, Floor, Mate, Rhyme, Question Master …). Kings fill the King's Cup, and whoever pulls the 4th king drinks it. | ✅ Playable |
+| 5–6 | Mystery games | 🌱 Coming soon |
 
 During a Full Night, games that aren't ready yet are skipped automatically. The **Sip Bank** tracks how many sips
 everyone has drunk and handed out, and the night ends with awards and a rematch button.
@@ -55,8 +61,11 @@ frontend/ (React 19 + Vite)
 backend/backend/ (Spring Boot 4, Java 17)
   game/        GameType enum: the six games and which are playable
   session/     sessions, players, session store, REST API
-  blackjack/   shoe, hands, rules, REST API
+  cards/       shared deck: cards, ranks, suits, shuffled shoe
+  blackjack/   hands, seats, rules, REST API
   dares/       Brain Dares rules + REST API
+  higherlower/ Higher or Lower rules + REST API
+  ringoffire/  Ring of Fire rules + REST API
   config/      CORS, security headers, rate limiting
   exception/   error types + global handler (RFC 9457 problem JSON)
 ```
@@ -75,6 +84,8 @@ hole card is never sent until it's revealed).
 | DELETE | `/api/sessions/{id}` | End the session |
 | GET/POST | `/api/sessions/{id}/blackjack`, `/deal`, `/action` | Play blackjack |
 | GET/POST | `/api/sessions/{id}/dares`, `/draw`, `/resolve` | Play Brain Dares |
+| GET/POST | `/api/sessions/{id}/higher-lower`, `/guess`, `/pass` | Play Higher or Lower |
+| GET/POST | `/api/sessions/{id}/ring-of-fire`, `/draw`, `/resolve`, `/restart` | Play Ring of Fire |
 
 Every `/api/sessions/{id}/**` call needs the `X-Session-Token` header.
 
@@ -111,10 +122,10 @@ Set these in `application.properties` or as environment variables (e.g. `FUNNIGH
 
 Frontend: set `VITE_API_BASE_URL` if the API isn't served from the same origin.
 
-## Adding game 3–6
+## Adding game 5–6
 
 1. **Backend:** add the rules + a controller under `/api/sessions/{id}/<game>` (see `dares/` for a small example). Use
-   `sessionService.withSession(...)` and `session.requireCurrentGame(...)`. Then set the game's name and
+   `sessionService.withSession(...)` and `session.game(GameType.X, YourGame.class, ...)`. Then set the game's name and
    `available = true` in `GameType`.
 2. **Frontend:** create `src/games/<game>/YourGame.jsx` and register it in `src/games/registry.js`. It receives
    `sessionId`, `token`, `players` and `onScoresChanged`.

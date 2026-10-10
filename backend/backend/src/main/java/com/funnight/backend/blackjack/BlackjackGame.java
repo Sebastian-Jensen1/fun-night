@@ -1,5 +1,6 @@
 package com.funnight.backend.blackjack;
 
+import com.funnight.backend.cards.Shoe;
 import com.funnight.backend.exception.GameRuleException;
 import com.funnight.backend.exception.InvalidRequestException;
 import com.funnight.backend.session.Player;

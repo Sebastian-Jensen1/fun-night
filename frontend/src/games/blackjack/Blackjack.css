@@ -209,48 +209,6 @@
 .bj-seat--blackjack .bj-result { background: var(--sun); }
 .bj-seat--lose .bj-result, .bj-seat--bust .bj-result { background: #ffb3a6; }
 
-/* --- cards -------------------------------------------------------------- */
-.card {
-  position: relative;
-  width: 66px; height: 94px;
-  margin-left: -30px;
-  background: var(--white);
-  border: 3px solid var(--ink);
-  border-radius: 10px;
-  box-shadow: 0 3px 0 rgba(0,0,0,.35);
-  color: var(--ink);
-  font-family: var(--font-display);
-  animation: deal .35s cubic-bezier(.2,.9,.3,1.2) both;
-  animation-delay: calc(var(--i, 0) * 90ms);
-}
-.card:first-child { margin-left: 0; }
-.card--red { color: var(--danger); }
-
-.card__corner { position: absolute; top: 4px; left: 6px; font-size: .95rem; line-height: 1; text-align: center; }
-.card__corner--flip { top: auto; left: auto; bottom: 4px; right: 6px; rotate: 180deg; }
-.card__pip { position: absolute; inset: 0; display: grid; place-items: center; font-size: 2.1rem; }
-
-.card--back {
-  display: grid;
-  place-items: center;
-  background:
-    repeating-linear-gradient(45deg, #b4562a 0 6px, #d9783d 6px 12px);
-  box-shadow: inset 0 0 0 4px var(--white), 0 3px 0 rgba(0,0,0,.35);
-}
-.card__back-art {
-  display: grid; place-items: center;
-  width: 36px; height: 36px;
-  background: var(--packet);
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  font-size: 1.2rem;
-}
-
-@keyframes deal {
-  from { transform: translate(40px, -120px) rotate(25deg); opacity: 0; }
-  to { transform: none; opacity: 1; }
-}
-
 /* --- controls ----------------------------------------------------------- */
 .bj__controls {
   display: flex;
@@ -274,8 +232,8 @@
   .bj__speech::after { bottom: -9px; border-width: 6px; border-top: 10px solid var(--white); }
   .bj__table { padding: 40px 8px 18px; border-width: 7px; border-radius: 28px 28px 60px 60px; }
   .bj-seat { width: calc(50% - 8px); max-width: 160px; }
-  .card { width: 54px; height: 78px; margin-left: -26px; }
-  .card__pip { font-size: 1.7rem; }
+  .bj .card { width: 54px; height: 78px; margin-left: -26px; }
+  .bj .card__pip { font-size: 1.7rem; }
   .bj-value { top: 58px; }
   .bj__controls .btn:not(.btn--big) { min-width: 0; flex: 1; }
   .bj__controls { width: 100%; }

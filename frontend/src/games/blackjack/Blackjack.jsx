@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { api } from '../../api/client'
 import Dealer from '../../components/Dealer'
-import PlayingCard from './PlayingCard'
+import PlayingCard from '../../components/PlayingCard'
 import './Blackjack.css'
 
 const DEFAULT_BET = 2

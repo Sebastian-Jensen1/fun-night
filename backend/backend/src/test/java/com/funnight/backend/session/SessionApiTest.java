@@ -61,6 +61,27 @@ class SessionApiTest {
     }
 
     @Test
+    void playsHigherOrLowerAndRingOfFire() throws Exception {
+        String[] hl = createQuickplay("higher-lower");
+        mvc.perform(post("/api/sessions/" + hl[0] + "/higher-lower/guess")
+                        .header("X-Session-Token", hl[1])
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"playerId\":1,\"guess\":\"HIGHER\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.lastResult.playerName").value("Seb"));
+
+        String[] ring = createQuickplay("ring-of-fire");
+        mvc.perform(post("/api/sessions/" + ring[0] + "/ring-of-fire/draw")
+                        .header("X-Session-Token", ring[1])
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"playerId\":1}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.phase").value("RESOLVE"))
+                .andExpect(jsonPath("$.rule.title").isString())
+                .andExpect(jsonPath("$.rules.length()").value(13));
+    }
+
+    @Test
     void rejectsMissingOrWrongToken() throws Exception {
         String[] s = createQuickplay("blackjack");
         mvc.perform(get("/api/sessions/" + s[0])).andExpect(status().isForbidden());

@@ -1,4 +1,4 @@
-package com.funnight.backend.blackjack;
+package com.funnight.backend.cards;
 
 public enum Rank {
     TWO("2", 2), THREE("3", 3), FOUR("4", 4), FIVE("5", 5), SIX("6", 6), SEVEN("7", 7),
@@ -13,6 +13,9 @@ public enum Rank {
     }
 
     public String getLabel() { return label; }
+    /** Higher-or-lower strength: 2 is lowest, ace is highest. */
+    public int strength() { return ordinal() + 2; }
+
     /** Blackjack value; aces count 11 here and are reduced to 1 by {@link Hand} when needed. */
     public int getValue() { return value; }
 }

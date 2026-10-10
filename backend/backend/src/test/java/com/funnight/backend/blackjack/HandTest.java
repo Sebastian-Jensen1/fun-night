@@ -1,5 +1,8 @@
 package com.funnight.backend.blackjack;
 
+import com.funnight.backend.cards.Card;
+import com.funnight.backend.cards.Rank;
+import com.funnight.backend.cards.Suit;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

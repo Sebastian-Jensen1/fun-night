@@ -1,5 +1,7 @@
 package com.funnight.backend.blackjack;
 
+import com.funnight.backend.cards.Shoe;
+import com.funnight.backend.game.GameType;
 import com.funnight.backend.session.GameSession;
 import com.funnight.backend.session.SessionService;
 import jakarta.validation.Valid;
@@ -56,6 +58,6 @@ public class BlackjackController {
     }
 
     private static BlackjackGame game(GameSession session) {
-        return session.blackjack(() -> new BlackjackGame(new Shoe()));
+        return session.game(GameType.BLACKJACK, BlackjackGame.class, () -> new BlackjackGame(new Shoe()));
     }
 }

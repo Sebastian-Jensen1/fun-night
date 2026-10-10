@@ -1,3 +1,3 @@
-package com.funnight.backend.blackjack;
+package com.funnight.backend.cards;
 
 public enum Suit { HEARTS, DIAMONDS, CLUBS, SPADES }

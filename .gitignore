@@ -13,3 +13,11 @@ target/
 
 # OS
 .DS_Store
+# Local browser-test output
+.playwright-mcp/
+
+# Saved game nights (server snapshots)
+data/
+
+# Vite dependency cache
+.vite/

@@ -4,7 +4,8 @@ A party / drinking-game website for you and your friends. Start a **Full Night**
 back, or use **Quick Play** to jump straight into one. Play on a single shared screen, or let everyone scan a
 QR code and play from their own phone while the big screen shows the table.
 
-Three looks, switchable at any time and remembered per device:
+Six looks, switchable at any time and remembered per device: Synthwave, Pixel, Y2K, Kawaii, Undersea and
+Runic. The first three:
 
 | Synthwave | Pixel | Y2K |
 | --- | --- | --- |
@@ -90,7 +91,7 @@ web/ (React 19 + Vite)
   src/pages/        Home, QuickPick, Join, Lobby, Play, Final
   src/games/        one component per game + the registry (index.js)
   src/components/   cards, suits, icons, sip bank, QR code, dialogs, backdrop
-  src/styles/       base.css (layout), games.css, themes/ (synthwave, pixel, y2k)
+  src/styles/       base.css (layout), games.css, themes/ (one file per look)
 
 server/ (Spring Boot 4, Java 17)
   room/      rooms, seats, tokens, the sip bank, snapshots, live updates, REST API

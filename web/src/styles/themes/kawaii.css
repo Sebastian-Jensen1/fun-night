@@ -1,0 +1,258 @@
+/*
+ * Look 4: kawaii. Pastel candy colours, sticker-style outlines, round everything, a smiling
+ * cloud, hearts, stars and drifting petals.
+ */
+
+:root[data-theme='kawaii'] {
+  color-scheme: light;
+
+  --font-display: 'Mochiy Pop One', 'Zen Maru Gothic', system-ui, sans-serif;
+  --font-body: 'Zen Maru Gothic', system-ui, sans-serif;
+  --font-num: 'Zen Maru Gothic', system-ui, sans-serif;
+  --weight-body: 500;
+  --display-spacing: 0.02em;
+
+  --bg: #ffe3ef;
+  --bg-solid: #fff3f8;
+  --ink: #5b3760;
+  --ink-dim: #96709a;
+  --surface: rgba(255, 255, 255, 0.95);
+  --surface-solid: #fffafc;
+  --surface-2: #fff0f6;
+  --field: #ffffff;
+  --line: #ff9ec4;
+  --line-soft: #f7c6dc;
+  --line-w: 3px;
+  --radius: 1.5rem;
+  --btn-radius: 999px;
+  --chip-radius: 999px;
+
+  --accent: #ff5c9d;
+  --accent-ink: #ffffff;
+  --accent-2: #7a5cf0;
+  --good: #1f9d74;
+  --bad: #ee3d78;
+  --bad-ink: #ffffff;
+  --gold: #e37d10;
+  --gold-ink: #ffffff;
+  --focus: #7a5cf0;
+
+  --panel-shadow: 0 6px 0 0 #f7b3d0, 0 14px 26px rgba(238, 61, 120, 0.16);
+  --glow: 0 0 0 4px #ffd0e4, 0 6px 0 0 #ff9ec4;
+  --glow-gold: 0 0 0 4px #ffe1b8;
+  --scrim: rgba(255, 214, 232, 0.72);
+  --ease-pop: cubic-bezier(0.2, 1.7, 0.4, 1);
+
+  --card-bg: #ffffff;
+  --card-line: #ff9ec4;
+  --card-line-w: 3px;
+  --card-round: 0.16;
+  --card-back-line: #ff9ec4;
+  --card-shadow: 0 4px 0 0 #f7b3d0;
+  --suit-red: #ff4f8f;
+  --suit-black: #6a4bb5;
+  --card-back:
+    radial-gradient(circle at 25% 25%, #fff 0 12%, transparent 13%) 0 0 / 14px 14px,
+    radial-gradient(circle at 75% 75%, #fff 0 12%, transparent 13%) 0 0 / 14px 14px,
+    linear-gradient(135deg, #ff9ec4, #c9b6ff);
+  --pill-bg: #7a5cf0;
+  --pill-ink: #ffffff;
+}
+
+/* ---- scenery ------------------------------------------------------------------------------ */
+
+[data-theme='kawaii'] .bd--kawaii {
+  display: block;
+  background: linear-gradient(170deg, #ffd3e6 0%, #f3dcff 45%, #d6f4ff 78%, #dcffe9 100%);
+}
+[data-theme='kawaii'] .bd-dots {
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0 0.42rem, transparent 0.45rem);
+  background-size: 4rem 4rem;
+  background-position: 1rem 1rem;
+}
+[data-theme='kawaii'] .bd-cloud {
+  width: 15rem;
+  height: 5.4rem;
+  border-radius: 999px;
+  background: #fff;
+  filter: drop-shadow(0 0.5rem 0 rgba(201, 182, 255, 0.55));
+  animation: kw-float 7s ease-in-out infinite alternate;
+}
+[data-theme='kawaii'] .bd-cloud::before,
+[data-theme='kawaii'] .bd-cloud::after { content: ''; position: absolute; border-radius: 50%; background: #fff; }
+[data-theme='kawaii'] .bd-cloud::before { width: 6.4rem; height: 6.4rem; left: 2.2rem; top: -3rem; }
+[data-theme='kawaii'] .bd-cloud::after { width: 5rem; height: 5rem; right: 2.6rem; top: -2rem; }
+[data-theme='kawaii'] .bd-cloud--a { left: 5%; top: 14%; }
+[data-theme='kawaii'] .bd-cloud--b { right: 6%; bottom: 13%; transform: scale(0.75); animation-delay: -3s; }
+/* the cloud's face: two eyes, a tiny smile and blush */
+[data-theme='kawaii'] .bd-face {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 38%;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-left: -2.2rem;
+  border-radius: 50%;
+  background: #5b3760;
+  box-shadow: 3.7rem 0 0 #5b3760, -1.1rem 1rem 0 0.25rem #ffc2da, 4.8rem 1rem 0 0.25rem #ffc2da;
+}
+[data-theme='kawaii'] .bd-face::after {
+  content: '';
+  position: absolute;
+  left: 1.55rem;
+  top: 0.5rem;
+  width: 1.2rem;
+  height: 0.7rem;
+  border: 0.22rem solid #5b3760;
+  border-top: 0;
+  border-radius: 0 0 1rem 1rem;
+}
+[data-theme='kawaii'] .bd-heart {
+  width: 4.5rem;
+  aspect-ratio: 1;
+  background: #ff8fbd;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-8-5.2-8-11.2A4.8 4.8 0 0 1 12 6.6a4.8 4.8 0 0 1 8 3.2C20 15.8 12 21 12 21z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-8-5.2-8-11.2A4.8 4.8 0 0 1 12 6.6a4.8 4.8 0 0 1 8 3.2C20 15.8 12 21 12 21z'/%3E%3C/svg%3E") center / contain no-repeat;
+  animation: kw-beat 1.8s ease-in-out infinite;
+}
+[data-theme='kawaii'] .bd-heart--a { right: 12%; top: 16%; transform: rotate(14deg); }
+[data-theme='kawaii'] .bd-heart--b { left: 13%; bottom: 20%; width: 3rem; background: #c9b6ff; animation-delay: -0.9s; }
+[data-theme='kawaii'] .bd-star {
+  width: 3.4rem;
+  aspect-ratio: 1;
+  background: #ffe07a;
+  clip-path: polygon(50% 2%, 62% 36%, 98% 38%, 69% 59%, 80% 95%, 50% 73%, 20% 95%, 31% 59%, 2% 38%, 38% 36%);
+  animation: kw-spin 9s linear infinite;
+}
+[data-theme='kawaii'] .bd-star--a { left: 30%; top: 8%; }
+[data-theme='kawaii'] .bd-star--b { right: 28%; bottom: 9%; width: 2.4rem; background: #a8f0d0; animation-duration: 12s; }
+[data-theme='kawaii'] .bd-petal {
+  top: -2rem;
+  width: 1rem;
+  height: 1.4rem;
+  border-radius: 80% 0 80% 0;
+  background: #ffb7d5;
+  animation: kw-fall 11s linear infinite;
+}
+[data-theme='kawaii'] .bd-petal--a { left: 12%; }
+[data-theme='kawaii'] .bd-petal--b { left: 34%; animation-delay: -3s; animation-duration: 13s; }
+[data-theme='kawaii'] .bd-petal--c { left: 55%; animation-delay: -6s; }
+[data-theme='kawaii'] .bd-petal--d { left: 74%; animation-delay: -8s; animation-duration: 14s; }
+[data-theme='kawaii'] .bd-petal--e { left: 90%; animation-delay: -1.5s; }
+@keyframes kw-float { to { translate: 0 -1rem; } }
+@keyframes kw-beat { 50% { scale: 1.15; } }
+@keyframes kw-spin { to { rotate: 360deg; } }
+@keyframes kw-fall { to { translate: -6rem 110vh; rotate: 540deg; } }
+
+/* ---- type --------------------------------------------------------------------------------- */
+
+[data-theme='kawaii'] .btn { font-size: 0.8rem; text-transform: none; }
+[data-theme='kawaii'] .btn--sm { font-size: 0.68rem; }
+[data-theme='kawaii'] .btn--lg { font-size: 0.98rem; }
+[data-theme='kawaii'] .home__title { font-size: clamp(3rem, min(12.5vw, 18vh), 10rem); text-transform: none; }
+[data-theme='kawaii'] .brand,
+[data-theme='kawaii'] .mode__name,
+[data-theme='kawaii'] .gamecard__name,
+[data-theme='kawaii'] .page-title,
+[data-theme='kawaii'] .final__title,
+[data-theme='kawaii'] .stage__name,
+[data-theme='kawaii'] .turnline__who,
+[data-theme='kawaii'] .guilty__question,
+[data-theme='kawaii'] .modal__title,
+[data-theme='kawaii'] .rof-rule__title,
+[data-theme='kawaii'] .verdict,
+[data-theme='kawaii'] .bj__line { text-transform: none; }
+[data-theme='kawaii'] .mode__name { font-size: 2rem; }
+[data-theme='kawaii'] .final__title { font-size: clamp(1.8rem, min(6vw, 8vh), 4rem); }
+[data-theme='kawaii'] .guilty__question { font-size: clamp(1.3rem, 5.6cqh, 2.6rem); line-height: 1.25; }
+
+/* ---- pieces ------------------------------------------------------------------------------- */
+
+[data-theme='kawaii'] .home__fun,
+[data-theme='kawaii'] .home__night,
+[data-theme='kawaii'] .final__title {
+  color: #fff;
+  text-shadow:
+    0.05em 0 0 var(--kw-out), -0.05em 0 0 var(--kw-out), 0 0.05em 0 var(--kw-out), 0 -0.05em 0 var(--kw-out),
+    0.04em 0.04em 0 var(--kw-out), -0.04em 0.04em 0 var(--kw-out), 0.04em -0.04em 0 var(--kw-out), -0.04em -0.04em 0 var(--kw-out),
+    0 0.12em 0 var(--kw-drop);
+}
+[data-theme='kawaii'] .home__fun, [data-theme='kawaii'] .final__title { --kw-out: #ff5c9d; --kw-drop: #ffb7d5; }
+[data-theme='kawaii'] .home__night { --kw-out: #7a5cf0; --kw-drop: #c9b6ff; }
+[data-theme='kawaii'] .brand__fun, [data-theme='kawaii'] .page-title, [data-theme='kawaii'] .mode__name { color: #ff5c9d; }
+[data-theme='kawaii'] .brand__night { color: #7a5cf0; }
+[data-theme='kawaii'] .home__kicker {
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent-2);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  box-shadow: 0 3px 0 0 #dcd0ff;
+}
+[data-theme='kawaii'] .home__kicker::before, [data-theme='kawaii'] .home__kicker::after { content: ' ♡ '; color: #ff5c9d; }
+
+[data-theme='kawaii'] .btn {
+  --btn-bg: #ffffff;
+  --btn-line: #ff9ec4;
+  --btn-ink: #c93d7c;
+  box-shadow: 0 4px 0 0 #f7b3d0;
+  transition: transform 0.14s var(--ease-pop), box-shadow 0.14s;
+}
+[data-theme='kawaii'] .btn:hover:not(:disabled) { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 6px 0 0 #f7b3d0; }
+[data-theme='kawaii'] .btn:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 0 #f7b3d0; }
+[data-theme='kawaii'] .btn--primary, [data-theme='kawaii'] .btn.is-on {
+  --btn-bg: linear-gradient(180deg, #ff8fbd, #ff5c9d);
+  --btn-line: #ffffff;
+  --btn-ink: #ffffff;
+  box-shadow: 0 4px 0 0 #d93b7f, 0 0 0 3px #ff9ec4;
+  text-shadow: 0 1px 0 #d93b7f;
+}
+[data-theme='kawaii'] .btn--primary:hover:not(:disabled) { box-shadow: 0 6px 0 0 #d93b7f, 0 0 0 3px #ff9ec4; }
+[data-theme='kawaii'] .btn--primary:active:not(:disabled) { box-shadow: 0 1px 0 0 #d93b7f, 0 0 0 3px #ff9ec4; }
+[data-theme='kawaii'] .btn--danger {
+  --btn-bg: linear-gradient(180deg, #b7a2ff, #7a5cf0);
+  --btn-line: #ffffff;
+  --btn-ink: #ffffff;
+  box-shadow: 0 4px 0 0 #5a3fd0, 0 0 0 3px #c9b6ff;
+  text-shadow: 0 1px 0 #5a3fd0;
+}
+[data-theme='kawaii'] .btn--ghost { --btn-bg: rgba(255, 255, 255, 0.6); --btn-line: #f7c6dc; --btn-ink: var(--ink-dim); box-shadow: none; }
+
+[data-theme='kawaii'] .mode, [data-theme='kawaii'] .gamecard, [data-theme='kawaii'] .dare-pick { transition: transform 0.18s var(--ease-pop), box-shadow 0.18s; }
+[data-theme='kawaii'] .mode:hover:not(:disabled), [data-theme='kawaii'] .gamecard:hover:not(:disabled) {
+  transform: translateY(-5px) rotate(-0.6deg);
+  box-shadow: 0 11px 0 0 #f7b3d0, 0 20px 30px rgba(238, 61, 120, 0.2);
+}
+[data-theme='kawaii'] .mode--quick { --line: #c9b6ff; box-shadow: 0 6px 0 0 #c9b6ff, 0 14px 26px rgba(122, 92, 240, 0.16); }
+[data-theme='kawaii'] .mode--quick .mode__name, [data-theme='kawaii'] .mode--quick .mode__arrow { color: #7a5cf0; }
+[data-theme='kawaii'] .dare-pick, [data-theme='kawaii'] .dare-card, [data-theme='kawaii'] .rof-rule { box-shadow: 0 5px 0 0 color-mix(in srgb, var(--pick, #ff9ec4) 45%, white); background: #fff; }
+[data-theme='kawaii'] .dare-pick:hover:not(:disabled) { transform: translateY(-4px) rotate(-1deg); }
+[data-theme='kawaii'] .dare-pick--mild, [data-theme='kawaii'] .dare-card--mild { --pick: #7a5cf0; }
+
+[data-theme='kawaii'] .stage__head { border-bottom-style: dashed; }
+[data-theme='kawaii'] .themes { background: rgba(255, 255, 255, 0.7); }
+[data-theme='kawaii'] .themes__opt.is-on { background: #ff5c9d; color: #fff; }
+[data-theme='kawaii'] .trail__stop { background: #fff; border-radius: 50%; }
+[data-theme='kawaii'] .trail__stop--active { background: #ff5c9d; color: #fff; box-shadow: 0 3px 0 0 #d93b7f; }
+[data-theme='kawaii'] .trail__stop--completed { background: #e6fff3; }
+[data-theme='kawaii'] .trail__num { background: transparent; }
+[data-theme='kawaii'] .stepper__btn { border-radius: 50%; background: #fff; color: #c93d7c; box-shadow: 0 2px 0 0 #f7b3d0; }
+[data-theme='kawaii'] .bj-seat, [data-theme='kawaii'] .lane, [data-theme='kawaii'] .voter,
+[data-theme='kawaii'] .betrow, [data-theme='kawaii'] .roster__row { background: #fff; border-style: dashed; }
+[data-theme='kawaii'] .bj-seat.is-active { border-style: solid; }
+[data-theme='kawaii'] .hl__dot.is-lit { background: #ffd24a; border-color: #e37d10; }
+[data-theme='kawaii'] .cup__glass { border-color: #ff9ec4; background: #fff; }
+[data-theme='kawaii'] .cup__drink { background: linear-gradient(180deg, #ffd9a0, #ffad5c); }
+[data-theme='kawaii'] .tally__bar { background: #fff; }
+[data-theme='kawaii'] .tally__bar span { background: linear-gradient(90deg, #c9b6ff, #7a5cf0); }
+[data-theme='kawaii'] .tally__row.is-guilty .tally__bar span { background: linear-gradient(90deg, #ff9ec4, #ee3d78); }
+[data-theme='kawaii'] .progress__bar { background: #fff; }
+[data-theme='kawaii'] .progress__bar span { background: #7a5cf0; }
+[data-theme='kawaii'] .handout { border-color: #ffc37a; box-shadow: 0 6px 0 0 #ffdcae; }
+[data-theme='kawaii'] .input { border-color: #f7c6dc; }
+[data-theme='kawaii'] .alert { background: #fff; color: var(--bad); }
+[data-theme='kawaii'] .sipbank__row.is-me, [data-theme='kawaii'] .final__row.is-top { background: #fff0f6; }
+[data-theme='kawaii'] .rof__slot { box-shadow: 0 2px 0 0 #f7b3d0; }

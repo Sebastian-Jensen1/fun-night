@@ -370,6 +370,11 @@ svg { display: block; }
   border-radius: 0;
   background: conic-gradient(#ffcd75 0 25%, #38b764 0 50%, #41a6f6 0 75%, #b13e53 0);
 }
+.themes__opt--kawaii .themes__swatch { border-radius: 50%; background: radial-gradient(circle at 50% 50%, #fff 0 22%, #ff8fbd 24% 60%, #c9b6ff 62%); }
+.themes__opt--undersea .themes__swatch { border-radius: 30% 45% 35% 40%; background: radial-gradient(circle at 30% 30%, #c79a00 0 12%, transparent 13%), radial-gradient(circle at 68% 62%, #c79a00 0 14%, transparent 15%), #ffe14d; box-shadow: 0 0 0 1.5px #10243f; }
+.themes__opt--runic .themes__swatch { border-radius: 0; transform: rotate(45deg) scale(0.8); background: linear-gradient(135deg, #0ac8b9, #0a323c); box-shadow: 0 0 0 1.5px #c8aa6e; }
+/* With six looks there is only room to name the one that's on */
+.themes__opt:not(.is-on) .themes__label { display: none; }
 .themes__opt--y2k .themes__swatch { border-radius: 50%; background: radial-gradient(circle at 30% 25%, #fff 0 18%, #8fb4ff 45%, #2b5cff 100%); }
 
 /* ---- line-up trail ------------------------------------------------------------------------ */

@@ -1,0 +1,244 @@
+/*
+ * Look 5: undersea cartoon. A bright sea with bloom shapes drifting in the water, a sandy floor,
+ * swaying seaweed and bubbles; wobbly hand-cut panels with thick outlines and sponge buttons.
+ */
+
+:root[data-theme='undersea'] {
+  color-scheme: light;
+
+  --font-display: 'Luckiest Guy', 'Nunito', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+  --font-num: 'Nunito', system-ui, sans-serif;
+  --weight-body: 700;
+  --display-spacing: 0.04em;
+
+  --bg: #2aa7d8;
+  --bg-solid: #fff6d6;
+  --ink: #10243f;
+  --ink-dim: #4c5f78;
+  --surface: #fff6d6;
+  --surface-solid: #fff6d6;
+  --surface-2: #ffeaa8;
+  --field: #ffffff;
+  --line: #10243f;
+  --line-soft: #9c8a55;
+  --line-w: 3px;
+  --radius: 1.3rem 0.9rem 1.5rem 0.8rem / 0.9rem 1.4rem 0.8rem 1.3rem;
+  --btn-radius: 0.9rem 0.6rem 1rem 0.55rem / 0.6rem 0.95rem 0.55rem 0.9rem;
+  --chip-radius: 0.6rem 0.4rem 0.7rem 0.4rem;
+  --dot-radius: 45% 55% 50% 50%;
+
+  --accent: #ff4f9a;
+  --accent-ink: #ffffff;
+  --accent-2: #0b7fb5;
+  --good: #14854a;
+  --bad: #d92b2b;
+  --bad-ink: #ffffff;
+  --gold: #c95f00;
+  --gold-ink: #ffffff;
+  --focus: #ff4f9a;
+
+  --panel-shadow: 6px 7px 0 0 rgba(16, 36, 63, 0.85);
+  --glow: 0 0 0 4px #ff4f9a;
+  --glow-gold: 0 0 0 4px #ffb347;
+  --scrim: rgba(11, 79, 122, 0.72);
+  --ease-pop: cubic-bezier(0.2, 1.8, 0.4, 1);
+
+  --card-bg: #fffdf2;
+  --card-line: #10243f;
+  --card-line-w: 3px;
+  --card-round: 0.14;
+  --card-back-line: #10243f;
+  --card-shadow: 3px 4px 0 0 rgba(16, 36, 63, 0.85);
+  --suit-red: #e0322f;
+  --suit-black: #10243f;
+  --card-back:
+    radial-gradient(circle at 50% 50%, #ffe14d 0 16%, transparent 17%) 0 0 / 18px 18px,
+    radial-gradient(circle at 0 0, #ff8ec2 0 22%, transparent 23%) 0 0 / 18px 18px,
+    radial-gradient(circle at 100% 100%, #ff8ec2 0 22%, transparent 23%) 0 0 / 18px 18px,
+    #b455d6;
+  --pill-bg: #10243f;
+  --pill-ink: #ffe14d;
+}
+
+/* ---- scenery ------------------------------------------------------------------------------ */
+
+[data-theme='undersea'] .bd--undersea {
+  display: block;
+  background: linear-gradient(180deg, #46c6ee 0%, #2aa7d8 45%, #1b86c2 80%, #156fa8 100%);
+}
+/* soft bloom shapes hanging in the water: five petals round a centre */
+[data-theme='undersea'] .bd-bloom {
+  width: 16rem;
+  aspect-ratio: 1;
+  opacity: 0.32;
+  background:
+    radial-gradient(circle at 50% 50%, #bff0ff 0 15%, transparent 16%),
+    radial-gradient(circle at 50% 17%, #9be4ff 0 18%, transparent 19%),
+    radial-gradient(circle at 81% 40%, #9be4ff 0 18%, transparent 19%),
+    radial-gradient(circle at 69% 77%, #9be4ff 0 18%, transparent 19%),
+    radial-gradient(circle at 31% 77%, #9be4ff 0 18%, transparent 19%),
+    radial-gradient(circle at 19% 40%, #9be4ff 0 18%, transparent 19%);
+  animation: us-drift 16s ease-in-out infinite alternate;
+}
+[data-theme='undersea'] .bd-bloom--a { left: 4%; top: 6%; }
+[data-theme='undersea'] .bd-bloom--b { right: 8%; top: 22%; width: 11rem; animation-delay: -5s; }
+[data-theme='undersea'] .bd-bloom--c { left: 38%; top: 2%; width: 9rem; animation-delay: -9s; }
+[data-theme='undersea'] .bd-bloom--d { right: 30%; top: 46%; width: 13rem; opacity: 0.2; animation-delay: -12s; }
+@keyframes us-drift { to { translate: 2rem 1.2rem; rotate: 18deg; } }
+[data-theme='undersea'] .bd-sand {
+  left: -5%;
+  right: -5%;
+  bottom: -4vh;
+  height: 17vh;
+  border-top: 4px solid #10243f;
+  border-radius: 50% 50% 0 0 / 38% 30% 0 0;
+  background:
+    radial-gradient(circle, #d9b45a 0 0.2rem, transparent 0.22rem) 0 0 / 3.2rem 2.4rem,
+    radial-gradient(circle, #e7c877 0 0.14rem, transparent 0.16rem) 1.4rem 1rem / 2.6rem 2rem,
+    linear-gradient(180deg, #ffe9a6, #f3cf74);
+}
+[data-theme='undersea'] .bd-weed {
+  bottom: 6vh;
+  width: 2rem;
+  height: 26vh;
+  border: 4px solid #10243f;
+  border-bottom: 0;
+  border-radius: 60% 40% 0 0 / 22% 16% 0 0;
+  background: linear-gradient(90deg, #2fbf71, #1b9a55);
+  transform-origin: 50% 100%;
+  animation: us-sway 4.5s ease-in-out infinite alternate;
+}
+[data-theme='undersea'] .bd-weed--a { left: 5%; }
+[data-theme='undersea'] .bd-weed--b { left: 8.5%; height: 18vh; animation-delay: -1.5s; background: linear-gradient(90deg, #56d68b, #2fbf71); }
+[data-theme='undersea'] .bd-weed--c { right: 7%; height: 22vh; animation-delay: -2.5s; }
+[data-theme='undersea'] .bd-weed--d { right: 11%; height: 30vh; animation-delay: -0.7s; background: linear-gradient(90deg, #ff8ec2, #e0559a); }
+@keyframes us-sway { from { transform: skewX(-9deg); } to { transform: skewX(9deg); } }
+[data-theme='undersea'] .bd-bubble {
+  bottom: -4rem;
+  width: 2.2rem;
+  aspect-ratio: 1;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.95) 0 14%, rgba(255, 255, 255, 0.12) 16%);
+  animation: us-rise 9s ease-in infinite;
+}
+[data-theme='undersea'] .bd-bubble--a { left: 14%; }
+[data-theme='undersea'] .bd-bubble--b { left: 31%; width: 1.2rem; animation-duration: 7s; animation-delay: -2s; }
+[data-theme='undersea'] .bd-bubble--c { left: 52%; width: 3rem; animation-duration: 12s; animation-delay: -5s; }
+[data-theme='undersea'] .bd-bubble--d { left: 73%; width: 1.5rem; animation-delay: -6.5s; }
+[data-theme='undersea'] .bd-bubble--e { left: 88%; animation-duration: 10s; animation-delay: -3.5s; }
+@keyframes us-rise { 50% { translate: 1.5rem -55vh; } 100% { translate: -1rem -115vh; } }
+
+/* ---- type: the display font sits low in its box --------------------------------------------- */
+
+[data-theme='undersea'] .btn { font-size: 0.95rem; font-weight: 400; padding-top: 0.7rem; letter-spacing: 0.05em; }
+[data-theme='undersea'] .btn--sm { font-size: 0.8rem; padding-top: 0.45rem; }
+[data-theme='undersea'] .btn--lg { font-size: 1.2rem; padding-top: 0.95rem; }
+[data-theme='undersea'] .btn--icon { padding-top: 0; font-family: var(--font-body); font-weight: 900; }
+[data-theme='undersea'] .home__title { font-size: clamp(3.4rem, min(14vw, 20vh), 11.5rem); font-weight: 400; }
+[data-theme='undersea'] .stage__name, [data-theme='undersea'] .topbar__title { padding-top: 0.25em; }
+[data-theme='undersea'] .themes__opt { padding-top: 0.4rem; }
+[data-theme='undersea'] .chip { font-weight: 900; }
+
+/* ---- pieces ------------------------------------------------------------------------------- */
+
+[data-theme='undersea'] .home__fun,
+[data-theme='undersea'] .home__night,
+[data-theme='undersea'] .final__title,
+[data-theme='undersea'] .brand__fun,
+[data-theme='undersea'] .brand__night {
+  text-shadow:
+    0.045em 0 0 #10243f, -0.045em 0 0 #10243f, 0 0.045em 0 #10243f, 0 -0.045em 0 #10243f,
+    0.035em 0.035em 0 #10243f, -0.035em 0.035em 0 #10243f, 0.035em -0.035em 0 #10243f, -0.035em -0.035em 0 #10243f,
+    0.07em 0.11em 0 #10243f;
+}
+[data-theme='undersea'] .home__fun, [data-theme='undersea'] .brand__fun, [data-theme='undersea'] .final__title { color: #ffe14d; }
+[data-theme='undersea'] .home__night, [data-theme='undersea'] .brand__night { color: #ff8ec2; }
+[data-theme='undersea'] .home__fun { display: inline-block; rotate: -4deg; }
+[data-theme='undersea'] .home__night { display: inline-block; rotate: 3deg; }
+[data-theme='undersea'] .home__kicker {
+  padding: 0.55rem 1rem 0.35rem;
+  border: 3px solid #10243f;
+  border-radius: var(--chip-radius);
+  background: #b97a3c;
+  color: #fff6d6;
+  box-shadow: 4px 4px 0 0 rgba(16, 36, 63, 0.85);
+  rotate: -1.5deg;
+  margin-bottom: 1.4rem;
+}
+[data-theme='undersea'] .home__small { color: #eaf8ff; }
+[data-theme='undersea'] .topbar__title { color: #eaf8ff; text-shadow: 0.08em 0.08em 0 #10243f; }
+[data-theme='undersea'] .page-title, [data-theme='undersea'] .mode__name { color: #c2410c; }
+
+/* buttons are little sponges: yellow, pitted, thick outline */
+[data-theme='undersea'] .btn {
+  --btn-line: #10243f;
+  --btn-ink: #10243f;
+  background:
+    radial-gradient(circle at 14% 30%, #d9b100 0 0.2rem, transparent 0.22rem),
+    radial-gradient(circle at 82% 22%, #d9b100 0 0.14rem, transparent 0.16rem),
+    radial-gradient(circle at 68% 76%, #d9b100 0 0.22rem, transparent 0.24rem),
+    radial-gradient(circle at 30% 82%, #d9b100 0 0.12rem, transparent 0.14rem),
+    #ffe14d;
+  box-shadow: 3px 4px 0 0 #10243f;
+  transition: transform 0.14s var(--ease-pop), box-shadow 0.14s;
+}
+[data-theme='undersea'] .btn:hover:not(:disabled) { transform: translate(-1px, -2px) rotate(-1.5deg); box-shadow: 5px 7px 0 0 #10243f; }
+[data-theme='undersea'] .btn:active:not(:disabled) { transform: translate(3px, 4px); box-shadow: 0 0 0 0 #10243f; }
+[data-theme='undersea'] .btn--primary, [data-theme='undersea'] .btn.is-on {
+  --btn-ink: #ffffff;
+  background:
+    radial-gradient(circle at 16% 30%, #d6347f 0 0.2rem, transparent 0.22rem),
+    radial-gradient(circle at 80% 70%, #d6347f 0 0.2rem, transparent 0.22rem),
+    #ff4f9a;
+  text-shadow: 0.07em 0.09em 0 #10243f;
+}
+[data-theme='undersea'] .btn--danger { --btn-ink: #ffffff; background: #e0322f; text-shadow: 0.07em 0.09em 0 #10243f; }
+[data-theme='undersea'] .btn--ghost { --btn-ink: #10243f; background: #fff6d6; box-shadow: 2px 3px 0 0 #10243f; }
+
+[data-theme='undersea'] .mode, [data-theme='undersea'] .gamecard, [data-theme='undersea'] .dare-pick { transition: transform 0.18s var(--ease-pop), box-shadow 0.18s; }
+[data-theme='undersea'] .mode:hover:not(:disabled), [data-theme='undersea'] .gamecard:hover:not(:disabled) {
+  transform: translate(-3px, -4px) rotate(-0.8deg);
+  box-shadow: 10px 12px 0 0 rgba(16, 36, 63, 0.85);
+}
+[data-theme='undersea'] .mode--quick { background: #d8f4ff; }
+[data-theme='undersea'] .mode__tag, [data-theme='undersea'] .mode__icons, [data-theme='undersea'] .mode__arrow { color: #0b7fb5; }
+[data-theme='undersea'] .gamecard:nth-child(even) { background: #d8f4ff; }
+[data-theme='undersea'] .gamecard__icon, [data-theme='undersea'] .stage__icon { color: #ff4f9a; }
+[data-theme='undersea'] .dare-pick, [data-theme='undersea'] .dare-card, [data-theme='undersea'] .rof-rule { background: #fffdf2; box-shadow: 4px 5px 0 0 rgba(16, 36, 63, 0.85); }
+[data-theme='undersea'] .dare-pick:hover:not(:disabled) { transform: translate(-2px, -3px) rotate(-1deg); }
+
+[data-theme='undersea'] .stage__head { background: #b97a3c; color: #fff6d6; border-bottom-color: #10243f; border-radius: 1.1rem 0.7rem 0 0 / 0.7rem 1.2rem 0 0; }
+[data-theme='undersea'] .stage__head .stage__icon { color: #ffe14d; }
+[data-theme='undersea'] .stage__head .progress { color: #fff6d6; }
+[data-theme='undersea'] .stage__head .progress__bar { border-color: #10243f; background: #7d4f22; }
+[data-theme='undersea'] .progress__bar span { background: #ffe14d; }
+[data-theme='undersea'] .themes { background: #fff6d6; border-color: #10243f; }
+[data-theme='undersea'] .themes__opt.is-on { background: #10243f; color: #ffe14d; }
+[data-theme='undersea'] .trail__stop { background: #fff6d6; border-color: #10243f; color: #10243f; }
+[data-theme='undersea'] .trail__stop--completed { background: #b8f0c8; color: #14854a; }
+[data-theme='undersea'] .trail__stop--active { background: #ff4f9a; color: #fff; }
+[data-theme='undersea'] .trail__stop + .trail__stop::before { border-top-color: #10243f; }
+[data-theme='undersea'] .trail__num { background: #10243f; color: #ffe14d; border-radius: 0.3rem; }
+[data-theme='undersea'] .stepper__btn { border-color: #10243f; background: #ffe14d; box-shadow: 2px 2px 0 0 #10243f; }
+[data-theme='undersea'] .bj-seat, [data-theme='undersea'] .lane, [data-theme='undersea'] .voter,
+[data-theme='undersea'] .betrow, [data-theme='undersea'] .roster__row, [data-theme='undersea'] .payouts__row { border-color: #10243f; }
+[data-theme='undersea'] .bj-seat--win, [data-theme='undersea'] .voter.is-done, [data-theme='undersea'] .betrow.is-set { border-color: var(--good); }
+[data-theme='undersea'] .bj-seat--lose { border-color: var(--bad); }
+[data-theme='undersea'] .bj-seat.is-active { border-color: var(--accent); }
+[data-theme='undersea'] .input { border-color: #10243f; }
+[data-theme='undersea'] .hl__dot { border-color: #10243f; }
+[data-theme='undersea'] .hl__dot.is-lit { background: #ffe14d; border-color: #10243f; }
+[data-theme='undersea'] .cup__glass { background: #d8f4ff; }
+[data-theme='undersea'] .cup__drink { background: #ffb347; }
+[data-theme='undersea'] .tally__bar { border-color: #10243f; background: #fffdf2; }
+[data-theme='undersea'] .tally__bar span { background: #2aa7d8; }
+[data-theme='undersea'] .handout { border-color: #10243f; background: #ffe9a6; }
+[data-theme='undersea'] .chip { border-width: 2px; }
+[data-theme='undersea'] .alert { background: #fffdf2; color: var(--bad); }
+[data-theme='undersea'] .sipbank__row.is-me, [data-theme='undersea'] .final__row.is-top { background: #ffe9a6; }
+[data-theme='undersea'] .final__total { color: #fff; text-shadow: 0.08em 0.08em 0 #10243f; }
+[data-theme='undersea'] .final__total strong { color: #ffe14d; }
+[data-theme='undersea'] .waiting, [data-theme='undersea'] .loading { color: var(--ink-dim); }
+[data-theme='undersea'] .center .loading { color: #fff; }

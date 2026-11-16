@@ -1,0 +1,11 @@
+.git
+.github
+.idea
+.playwright-mcp
+docs
+backend
+frontend
+**/node_modules
+**/dist
+**/target
+**/data

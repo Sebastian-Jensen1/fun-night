@@ -1,0 +1,231 @@
+/*
+ * Look 1: futuristic synthwave. A neon sun setting over an endless grid, glowing magenta and
+ * cyan outlines on dark glass, chrome-gradient headlines.
+ */
+
+:root[data-theme='synthwave'] {
+  color-scheme: dark;
+
+  --font-display: 'Orbitron', 'Exo 2', system-ui, sans-serif;
+  --font-body: 'Exo 2', system-ui, sans-serif;
+  --font-num: 'Exo 2', system-ui, sans-serif;
+  --display-spacing: 0.08em;
+
+  --bg: #0b0221;
+  --bg-solid: #0b0221;
+  --ink: #f8f1ff;
+  --ink-dim: #baa8ea;
+  --surface: rgba(18, 7, 50, 0.8);
+  --surface-solid: #150938;
+  --surface-2: rgba(86, 34, 160, 0.3);
+  --field: rgba(6, 1, 24, 0.75);
+  --line: #ff2bd6;
+  --line-soft: rgba(150, 122, 255, 0.5);
+  --line-w: 2px;
+  --radius: 6px;
+  --btn-radius: 4px;
+  --chip-radius: 3px;
+
+  --accent: #ff2bd6;
+  --accent-ink: #16012c;
+  --accent-2: #22e6ff;
+  --good: #3dffb0;
+  --bad: #ff4d6d;
+  --bad-ink: #1c0010;
+  --gold: #ffd319;
+  --gold-ink: #241a00;
+  --focus: #ffd319;
+
+  --panel-shadow: inset 0 0 0 1px rgba(34, 230, 255, 0.22), 0 0 26px rgba(255, 43, 214, 0.3), 0 0 80px rgba(123, 44, 255, 0.22);
+  --glow: 0 0 20px rgba(255, 43, 214, 0.75), inset 0 0 14px rgba(255, 43, 214, 0.25);
+  --glow-gold: 0 0 16px rgba(255, 211, 25, 0.75);
+  --scrim: rgba(6, 0, 20, 0.8);
+  --ease-pop: cubic-bezier(0.2, 1.4, 0.4, 1);
+
+  --card-bg: linear-gradient(160deg, #23105a, #0d0429);
+  --card-line: #22e6ff;
+  --card-back-line: #ff2bd6;
+  --card-shadow: 0 0 12px rgba(34, 230, 255, 0.4);
+  --suit-red: #ff5cdd;
+  --suit-black: #6ff3ff;
+  --card-back:
+    repeating-linear-gradient(45deg, rgba(255, 43, 214, 0.6) 0 2px, transparent 2px 9px),
+    repeating-linear-gradient(-45deg, rgba(34, 230, 255, 0.45) 0 2px, transparent 2px 9px),
+    #14063a;
+  --pill-bg: #22e6ff;
+  --pill-ink: #03141c;
+}
+
+/* ---- scenery ------------------------------------------------------------------------------ */
+
+[data-theme='synthwave'] .bd--synthwave {
+  display: block;
+  background: linear-gradient(180deg, #05010f 0%, #130536 30%, #3a0c6b 48%, #8f1487 58%, #ff4fa3 62%);
+}
+[data-theme='synthwave'] .bd-stars {
+  inset: 0 0 40% 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 8% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 17% 42%, #cfe 50%, transparent 51%),
+    radial-gradient(2px 2px at 26% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 34% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 43% 8%, #ffd 50%, transparent 51%),
+    radial-gradient(1px 1px at 58% 22%, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 67% 10%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 74% 36%, #cff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 83% 16%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 91% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 96% 8%, #fdf 50%, transparent 51%),
+    radial-gradient(1px 1px at 4% 52%, #fff 50%, transparent 51%);
+}
+[data-theme='synthwave'] .bd-sun {
+  left: 50%;
+  top: 62%;
+  width: min(52vh, 62vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -78%);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff06a 0%, #ffc02e 32%, #ff6a6a 60%, #ff2bd6 88%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0 46%, transparent 46% 48.5%, #000 48.5% 56%, transparent 56% 59.5%, #000 59.5% 66%, transparent 66% 70.5%, #000 70.5% 76%, transparent 76% 81.5%, #000 81.5% 86%, transparent 86% 92.5%, #000 92.5% 100%);
+  mask-image: linear-gradient(180deg, #000 0 46%, transparent 46% 48.5%, #000 48.5% 56%, transparent 56% 59.5%, #000 59.5% 66%, transparent 66% 70.5%, #000 70.5% 76%, transparent 76% 81.5%, #000 81.5% 86%, transparent 86% 92.5%, #000 92.5% 100%);
+  opacity: 0.92;
+}
+[data-theme='synthwave'] .bd-grid {
+  left: -60%;
+  right: -60%;
+  top: 62%;
+  height: 100%;
+  background-color: #0a011d;
+  background-image:
+    linear-gradient(rgba(255, 43, 214, 0.85) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(34, 230, 255, 0.7) 2px, transparent 2px);
+  background-size: 100% 4rem, 5rem 100%;
+  transform: perspective(42vh) rotateX(64deg);
+  transform-origin: 50% 0;
+  animation: synth-grid 1.6s linear infinite;
+}
+@keyframes synth-grid { to { background-position: 0 4rem, 0 0; } }
+[data-theme='synthwave'] .bd-ridge {
+  left: 0;
+  right: 0;
+  top: calc(62% - 2px);
+  height: 3px;
+  z-index: 1;
+  background: #ffb3f1;
+  box-shadow: 0 0 24px 6px rgba(255, 43, 214, 0.9), 0 0 120px 46px rgba(255, 43, 214, 0.4);
+}
+[data-theme='synthwave'] .bd-scan {
+  inset: 0;
+  z-index: 2;
+  background:
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(4, 0, 16, 0.75) 100%);
+}
+
+/* ---- pieces ------------------------------------------------------------------------------- */
+
+[data-theme='synthwave'] .panel,
+[data-theme='synthwave'] .mode,
+[data-theme='synthwave'] .gamecard {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme='synthwave'] .brand__fun,
+[data-theme='synthwave'] .home__fun,
+[data-theme='synthwave'] .final__title,
+[data-theme='synthwave'] .mode__name,
+[data-theme='synthwave'] .page-title {
+  background: linear-gradient(180deg, #fff9a8 0%, #ffd319 28%, #ff8a3d 52%, #ff2bd6 78%, #a03bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-theme='synthwave'] .home__fun { font-style: italic; filter: drop-shadow(0 0 22px rgba(255, 43, 214, 0.55)); padding-right: 0.08em; }
+[data-theme='synthwave'] .brand__night,
+[data-theme='synthwave'] .home__night {
+  font-family: 'Mr Dafoe', cursive;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #ffe9fb;
+  text-shadow: 0 0 6px #ff2bd6, 0 0 18px #ff2bd6, 0 0 42px rgba(255, 43, 214, 0.8);
+  transform: rotate(-6deg);
+}
+[data-theme='synthwave'] .brand__night { font-size: 1.25em; }
+[data-theme='synthwave'] .home__night { font-size: 0.82em; margin-left: -0.12em; align-self: flex-end; }
+[data-theme='synthwave'] .home__kicker { color: var(--accent-2); text-shadow: 0 0 12px rgba(34, 230, 255, 0.7); }
+
+[data-theme='synthwave'] .btn {
+  --btn-line: var(--accent-2);
+  --btn-bg: rgba(34, 230, 255, 0.08);
+  --btn-ink: #dffbff;
+  box-shadow: 0 0 10px rgba(34, 230, 255, 0.35), inset 0 0 10px rgba(34, 230, 255, 0.15);
+  text-shadow: 0 0 8px rgba(34, 230, 255, 0.7);
+  transition: box-shadow 0.15s, transform 0.1s, background 0.15s;
+}
+[data-theme='synthwave'] .btn:hover:not(:disabled) { box-shadow: 0 0 20px rgba(34, 230, 255, 0.7), inset 0 0 14px rgba(34, 230, 255, 0.3); }
+[data-theme='synthwave'] .btn:active:not(:disabled) { transform: translateY(1px) scale(0.98); }
+[data-theme='synthwave'] .btn--primary,
+[data-theme='synthwave'] .btn.is-on {
+  --btn-line: #ffb3f1;
+  --btn-ink: #1a0130;
+  background: linear-gradient(90deg, #ff2bd6, #ff7a3d);
+  box-shadow: 0 0 18px rgba(255, 43, 214, 0.7);
+  text-shadow: none;
+}
+[data-theme='synthwave'] .btn--primary:hover:not(:disabled) { box-shadow: 0 0 30px rgba(255, 43, 214, 0.95), 0 0 60px rgba(255, 122, 61, 0.4); }
+[data-theme='synthwave'] .btn--danger {
+  --btn-line: var(--bad);
+  --btn-bg: rgba(255, 77, 109, 0.14);
+  --btn-ink: #ffd9e0;
+  box-shadow: 0 0 12px rgba(255, 77, 109, 0.5), inset 0 0 10px rgba(255, 77, 109, 0.2);
+  text-shadow: 0 0 8px rgba(255, 77, 109, 0.8);
+}
+[data-theme='synthwave'] .btn--ghost {
+  --btn-line: var(--line-soft);
+  --btn-bg: transparent;
+  --btn-ink: var(--ink-dim);
+  box-shadow: none;
+  text-shadow: none;
+}
+[data-theme='synthwave'] .btn--ghost:hover:not(:disabled) { --btn-ink: var(--ink); box-shadow: 0 0 12px rgba(150, 122, 255, 0.5); }
+
+[data-theme='synthwave'] .mode,
+[data-theme='synthwave'] .gamecard,
+[data-theme='synthwave'] .dare-pick { transition: transform 0.15s, box-shadow 0.15s; }
+[data-theme='synthwave'] .mode:hover:not(:disabled),
+[data-theme='synthwave'] .gamecard:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: inset 0 0 0 1px rgba(34, 230, 255, 0.4), 0 0 40px rgba(255, 43, 214, 0.6), 0 0 100px rgba(123, 44, 255, 0.35);
+}
+[data-theme='synthwave'] .mode--quick { --line: var(--accent-2); }
+[data-theme='synthwave'] .mode__icons,
+[data-theme='synthwave'] .gamecard__icon,
+[data-theme='synthwave'] .stage__icon { filter: drop-shadow(0 0 6px rgba(255, 43, 214, 0.9)); }
+[data-theme='synthwave'] .dare-pick:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 0 26px color-mix(in srgb, var(--pick) 60%, transparent); }
+
+[data-theme='synthwave'] .stage__name,
+[data-theme='synthwave'] .turnline__who,
+[data-theme='synthwave'] .guilty__question { text-shadow: 0 0 14px rgba(255, 43, 214, 0.6); }
+[data-theme='synthwave'] .joincard__code,
+[data-theme='synthwave'] .rof-rule__title,
+[data-theme='synthwave'] .dare-pick__name { text-shadow: 0 0 14px currentColor; }
+[data-theme='synthwave'] .hl__stat-value { text-shadow: 0 0 18px rgba(255, 211, 25, 0.7); }
+[data-theme='synthwave'] .verdict { text-shadow: 0 0 12px currentColor; }
+[data-theme='synthwave'] .themes__opt.is-on { background: var(--accent-2); color: #03141c; }
+[data-theme='synthwave'] .trail__stop--active { box-shadow: 0 0 14px rgba(255, 43, 214, 0.8); }
+[data-theme='synthwave'] .progress__bar span { box-shadow: 0 0 8px currentColor; }
+[data-theme='synthwave'] .pcard__corner,
+[data-theme='synthwave'] .pcard__pip { filter: drop-shadow(0 0 4px currentColor); }
+[data-theme='synthwave'] .cup__glass { border-color: var(--accent-2); box-shadow: 0 0 14px rgba(34, 230, 255, 0.5); }
+[data-theme='synthwave'] .cup__drink { background: linear-gradient(180deg, #ffd319, #ff7a3d); }
+[data-theme='synthwave'] .tally__bar span { background: linear-gradient(90deg, #22e6ff, #7b6cff); }
+[data-theme='synthwave'] .tally__row.is-guilty .tally__bar span { background: linear-gradient(90deg, #ff2bd6, #ff4d6d); }
+[data-theme='synthwave'] .handout { box-shadow: 0 0 22px rgba(255, 211, 25, 0.35); }
+[data-theme='synthwave'] .suitbtn,
+[data-theme='synthwave'] .backers__row .suit,
+[data-theme='synthwave'] .payouts__row .suit { background: #0d0429; }
+[data-theme='synthwave'] .input:focus-visible { outline-color: var(--accent-2); box-shadow: 0 0 16px rgba(34, 230, 255, 0.5); }
+[data-theme='synthwave'] .final__total,
+[data-theme='synthwave'] .home__small { text-shadow: 0 0 3px #0b0221, 0 0 10px #0b0221, 0 0 18px #0b0221; }

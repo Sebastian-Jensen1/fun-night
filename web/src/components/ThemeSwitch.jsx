@@ -1,7 +1,7 @@
 import { useTheme } from '../lib/theme'
 import { THEMES } from '../lib/themes'
 
-/** Three looks, one tap. Each device remembers its own choice. */
+/** Four looks, one tap. Each device remembers its own choice. */
 export default function ThemeSwitch() {
   const { theme, setTheme } = useTheme()
   return (

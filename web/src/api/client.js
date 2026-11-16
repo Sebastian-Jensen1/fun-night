@@ -1,4 +1,4 @@
-// Thin wrapper around fetch for the Fun Night API. Room calls send the device's secret token in
+// Thin wrapper around fetch for the Stamgæst API. Room calls send the device's secret token in
 // a header; it never goes in the URL, so it can't leak through logs, history or a shared link.
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? ''

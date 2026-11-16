@@ -43,9 +43,9 @@ export default function Home() {
       <div className="home">
         <header className="home__hero">
           <p className="home__kicker">Six games · one table · sips on the line</p>
-          <h1 className="home__title">
-            <span className="home__fun">Fun</span>
-            <span className="home__night">Night</span>
+          <h1 className="home__title" aria-label="Stamgæst">
+            <span className="home__fun" aria-hidden="true">Stam</span>
+            <span className="home__night" aria-hidden="true">gæst</span>
           </h1>
         </header>
 

@@ -1,6 +1,4 @@
 import { isRed } from '../lib/suits'
-import { useTheme } from '../lib/theme'
-import Bitmap from './Bitmap'
 
 const VECTOR = {
   HEARTS: <path d="M12 21s-8-5.2-8-11.2A4.8 4.8 0 0 1 12 6.6a4.8 4.8 0 0 1 8 3.2C20 15.8 12 21 12 21z" />,
@@ -16,18 +14,9 @@ const VECTOR = {
   ),
 }
 
-const PIXEL = {
-  HEARTS: ['..##...##..', '.####.####.', '###########', '###########', '###########', '.#########.', '..#######..', '...#####...', '....###....', '.....#.....', '...........'],
-  DIAMONDS: ['.....#.....', '....###....', '...#####...', '..#######..', '.#########.', '###########', '.#########.', '..#######..', '...#####...', '....###....', '.....#.....'],
-  SPADES: ['.....#.....', '....###....', '...#####...', '..#######..', '.#########.', '###########', '###########', '.###.#.###.', '.....#.....', '....###....', '...#####...'],
-  CLUBS: ['....###....', '...#####...', '...#####...', '....###....', '.###.#.###.', '###########', '###########', '.###.#.###.', '.....#.....', '....###....', '...#####...'],
-}
-
 /** A suit symbol drawn as a shape, so it looks the same on every device and matches the theme. */
 export default function Suit({ suit, className = '' }) {
-  const { theme } = useTheme()
   const classes = `suit suit--${isRed(suit) ? 'red' : 'black'} ${className}`
-  if (theme === 'pixel') return <Bitmap rows={PIXEL[suit]} className={classes} />
   return (
     <svg className={classes} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       {VECTOR[suit]}

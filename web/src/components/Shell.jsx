@@ -31,9 +31,9 @@ export default function Shell({ middle, actions, fit = true, children }) {
   return (
     <div className={`shell ${fit ? 'shell--fit' : ''}`}>
       <header className="topbar">
-        <Link to="/" className="brand" aria-label="Fun Night, back to start">
-          <span className="brand__fun">Fun</span>
-          <span className="brand__night">Night</span>
+        <Link to="/" className="brand" aria-label="Stamgæst, back to start">
+          <span className="brand__fun">Stam</span>
+          <span className="brand__night">gæst</span>
         </Link>
         <div className="topbar__middle">{middle}</div>
         <div className="topbar__actions">

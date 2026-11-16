@@ -151,7 +151,8 @@
 [data-theme='kawaii'] .btn { font-size: 0.8rem; text-transform: none; }
 [data-theme='kawaii'] .btn--sm { font-size: 0.68rem; }
 [data-theme='kawaii'] .btn--lg { font-size: 0.98rem; }
-[data-theme='kawaii'] .home__title { font-size: clamp(3rem, min(12.5vw, 18vh), 10rem); text-transform: none; }
+/* Room for the outline under the kicker, and for the g's descender above the cards */
+[data-theme='kawaii'] .home__title { font-size: clamp(3rem, min(12.5vw, 18vh), 10rem); text-transform: none; padding-bottom: 0.12em; margin-top: 0.12em; }
 [data-theme='kawaii'] .brand,
 [data-theme='kawaii'] .mode__name,
 [data-theme='kawaii'] .gamecard__name,

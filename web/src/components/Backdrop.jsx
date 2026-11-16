@@ -12,24 +12,6 @@ export default function Backdrop() {
         <div className="bd-grid" />
         <div className="bd-scan" />
       </div>
-      <div className="bd bd--pixel">
-        <div className="bd-sky" />
-        <div className="bd-moon" />
-        <div className="bd-hills bd-hills--far" />
-        <div className="bd-hills bd-hills--near" />
-        <div className="bd-ground" />
-      </div>
-      <div className="bd bd--y2k">
-        <div className="bd-blob bd-blob--a" />
-        <div className="bd-blob bd-blob--b" />
-        <div className="bd-blob bd-blob--c" />
-        <div className="bd-mesh" />
-        <div className="bd-orbit bd-orbit--a" />
-        <div className="bd-orbit bd-orbit--b" />
-        <div className="bd-spark bd-spark--a" />
-        <div className="bd-spark bd-spark--b" />
-        <div className="bd-spark bd-spark--c" />
-      </div>
       <div className="bd bd--kawaii">
         <div className="bd-dots" />
         <div className="bd-cloud bd-cloud--a"><span className="bd-face" /></div>

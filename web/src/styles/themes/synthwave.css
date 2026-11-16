@@ -154,6 +154,8 @@
 }
 [data-theme='synthwave'] .brand__night { font-size: 1.25em; }
 [data-theme='synthwave'] .home__night { font-size: 0.82em; margin-left: -0.12em; align-self: flex-end; }
+/* Room for the script g's tail above the cards */
+[data-theme='synthwave'] .home__title { padding-bottom: 0.16em; }
 [data-theme='synthwave'] .home__kicker { color: var(--accent-2); text-shadow: 0 0 12px rgba(34, 230, 255, 0.7); }
 
 [data-theme='synthwave'] .btn {

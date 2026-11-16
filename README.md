@@ -1,19 +1,24 @@
-# Fun Night
+# Stamgæst
 
 A party / drinking-game website for you and your friends. Start a **Full Night** to play six games back to
 back, or use **Quick Play** to jump straight into one. Play on a single shared screen, or let everyone scan a
 QR code and play from their own phone while the big screen shows the table.
 
-Six looks, switchable at any time and remembered per device: Synthwave, Pixel, Y2K, Kawaii, Undersea and
-Runic. The first three:
+(The project started out as *Fun Night*, which is why the repository and the code still use that name.)
 
-| Synthwave | Pixel | Y2K |
-| --- | --- | --- |
-| ![Home, synthwave](docs/screenshots/v2/home-synthwave.png) | ![Home, pixel](docs/screenshots/v2/home-pixel.png) | ![Home, Y2K](docs/screenshots/v2/home-y2k.png) |
+Four looks, switchable at any time and remembered per device: Synthwave, Kawaii, Undersea and Runic.
+
+| Synthwave | Kawaii |
+| --- | --- |
+| ![Home, synthwave](docs/screenshots/v2/home-synthwave.png) | ![Home, kawaii](docs/screenshots/v2/home-kawaii.png) |
+
+| Undersea | Runic |
+| --- | --- |
+| ![Home, undersea](docs/screenshots/v2/home-undersea.png) | ![Home, runic](docs/screenshots/v2/home-runic.png) |
 
 | Blackjack | Guilty! | Derby |
 | --- | --- | --- |
-| ![Blackjack](docs/screenshots/v2/blackjack-synthwave.png) | ![Guilty!](docs/screenshots/v2/guilty-y2k.png) | ![Derby](docs/screenshots/v2/derby-pixel.png) |
+| ![Blackjack](docs/screenshots/v2/blackjack-synthwave.png) | ![Guilty!](docs/screenshots/v2/guilty-kawaii.png) | ![Derby](docs/screenshots/v2/derby-undersea.png) |
 
 ## The games
 
@@ -60,6 +65,12 @@ npm run dev
 Open http://localhost:5173. To play from phones on the same wifi, nothing more is needed: the lobby's QR code
 automatically points at your computer's wifi address. (Guest networks that isolate devices from each other
 will block this; use a hosted copy instead, see below.)
+
+### On the home screen
+
+The site is installable: on a phone, open it and choose *Add to Home Screen* (Safari's share menu, or
+Chrome's menu) to get an icon that opens Stamgæst full screen. The name, colours and icons come from
+`web/public/manifest.json` and `web/public/icons/`. This needs HTTPS, so it only works on a hosted copy.
 
 ### Tests and checks
 

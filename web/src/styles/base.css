@@ -1,5 +1,5 @@
 /*
- * Layout and structure shared by all three looks. Everything visual (colours, fonts, borders,
+ * Layout and structure shared by all four looks. Everything visual (colours, fonts, borders,
  * shadows, scenery) comes from the custom properties and overrides in styles/themes/.
  *
  * Sizing: from 900px wide the root font size follows the screen, so the whole interface scales
@@ -80,6 +80,8 @@ svg { display: block; }
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  /* Added to the home screen the app runs edge to edge: keep clear of the notch and home bar */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .topbar {
@@ -107,7 +109,6 @@ svg { display: block; }
 .brand {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.35em;
   font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 900;
@@ -366,16 +367,11 @@ svg { display: block; }
 .themes__opt.is-on { background: var(--ink); color: var(--bg-solid, var(--bg)); }
 .themes__swatch { width: 0.9rem; height: 0.9rem; flex: none; border-radius: 3px; }
 .themes__opt--synthwave .themes__swatch { background: linear-gradient(180deg, #ffd319 0 35%, #ff2bd6 35% 70%, #22e6ff 70%); }
-.themes__opt--pixel .themes__swatch {
-  border-radius: 0;
-  background: conic-gradient(#ffcd75 0 25%, #38b764 0 50%, #41a6f6 0 75%, #b13e53 0);
-}
 .themes__opt--kawaii .themes__swatch { border-radius: 50%; background: radial-gradient(circle at 50% 50%, #fff 0 22%, #ff8fbd 24% 60%, #c9b6ff 62%); }
 .themes__opt--undersea .themes__swatch { border-radius: 30% 45% 35% 40%; background: radial-gradient(circle at 30% 30%, #c79a00 0 12%, transparent 13%), radial-gradient(circle at 68% 62%, #c79a00 0 14%, transparent 15%), #ffe14d; box-shadow: 0 0 0 1.5px #10243f; }
 .themes__opt--runic .themes__swatch { border-radius: 0; transform: rotate(45deg) scale(0.8); background: linear-gradient(135deg, #0ac8b9, #0a323c); box-shadow: 0 0 0 1.5px #c8aa6e; }
-/* With six looks there is only room to name the one that's on */
+/* With several looks there is only room to name the one that's on */
 .themes__opt:not(.is-on) .themes__label { display: none; }
-.themes__opt--y2k .themes__swatch { border-radius: 50%; background: radial-gradient(circle at 30% 25%, #fff 0 18%, #8fb4ff 45%, #2b5cff 100%); }
 
 /* ---- line-up trail ------------------------------------------------------------------------ */
 
@@ -531,7 +527,6 @@ svg { display: block; }
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
-  gap: 0 0.28em;
   font-family: var(--font-display);
   font-size: clamp(3.4rem, min(15vw, 21vh), 12rem);
   font-weight: 900;
